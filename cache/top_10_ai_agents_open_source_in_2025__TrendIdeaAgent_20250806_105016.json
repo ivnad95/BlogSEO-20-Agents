@@ -1,0 +1,1860 @@
+{
+  "agent": "TrendIdeaAgent",
+  "topic": "top 10 ai agents open source in 2025 ",
+  "timestamp": "2025-08-06T10:50:16.370355",
+  "output": {
+    "search_trends": {
+      "top": [
+        39,
+        39,
+        37,
+        39,
+        45,
+        43,
+        40,
+        40,
+        39,
+        38,
+        39,
+        44,
+        43,
+        39,
+        39,
+        39,
+        39,
+        40,
+        44,
+        45,
+        40,
+        40,
+        38,
+        39,
+        41,
+        44,
+        44,
+        39,
+        37,
+        39,
+        39,
+        43,
+        43,
+        46,
+        43,
+        39,
+        40,
+        41,
+        43,
+        45,
+        46,
+        39,
+        40,
+        38,
+        42,
+        45,
+        44,
+        46,
+        43,
+        40,
+        42,
+        43,
+        43,
+        48,
+        47,
+        43,
+        42,
+        41,
+        42,
+        43,
+        45,
+        45,
+        40,
+        41,
+        40,
+        43,
+        42,
+        45,
+        46,
+        42,
+        41,
+        41,
+        45,
+        43,
+        49,
+        52,
+        47,
+        46,
+        42,
+        42,
+        42,
+        46,
+        46,
+        44,
+        46,
+        45,
+        47,
+        48,
+        51,
+        53,
+        47,
+        47,
+        50
+      ],
+      "10": [
+        81,
+        81,
+        78,
+        79,
+        94,
+        77,
+        81,
+        97,
+        80,
+        84,
+        78,
+        73,
+        69,
+        81,
+        79,
+        76,
+        75,
+        74,
+        71,
+        71,
+        76,
+        76,
+        79,
+        75,
+        74,
+        67,
+        68,
+        74,
+        77,
+        77,
+        75,
+        72,
+        70,
+        70,
+        81,
+        94,
+        80,
+        78,
+        77,
+        71,
+        72,
+        77,
+        79,
+        73,
+        74,
+        75,
+        69,
+        69,
+        74,
+        74,
+        77,
+        76,
+        76,
+        69,
+        69,
+        77,
+        74,
+        77,
+        75,
+        75,
+        71,
+        72,
+        77,
+        77,
+        82,
+        91,
+        77,
+        71,
+        71,
+        75,
+        73,
+        79,
+        78,
+        73,
+        72,
+        72,
+        85,
+        82,
+        80,
+        87,
+        76,
+        71,
+        76,
+        78,
+        82,
+        87,
+        83,
+        82,
+        72,
+        75,
+        80,
+        84,
+        84
+      ],
+      "ai": [
+        58,
+        55,
+        61,
+        58,
+        52,
+        53,
+        57,
+        57,
+        59,
+        58,
+        55,
+        51,
+        52,
+        56,
+        63,
+        62,
+        65,
+        61,
+        59,
+        57,
+        61,
+        64,
+        63,
+        66,
+        54,
+        56,
+        55,
+        60,
+        59,
+        63,
+        63,
+        60,
+        59,
+        55,
+        64,
+        72,
+        65,
+        70,
+        64,
+        59,
+        61,
+        64,
+        67,
+        64,
+        69,
+        62,
+        58,
+        57,
+        64,
+        66,
+        67,
+        65,
+        62,
+        60,
+        62,
+        63,
+        100,
+        75,
+        62,
+        59,
+        55,
+        56,
+        62,
+        61,
+        64,
+        62,
+        62,
+        59,
+        57,
+        62,
+        65,
+        63,
+        67,
+        64,
+        62,
+        63,
+        66,
+        68,
+        64,
+        60,
+        62,
+        56,
+        56,
+        60,
+        69,
+        66,
+        65,
+        61,
+        62,
+        63,
+        70,
+        72,
+        84
+      ],
+      "agents": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        3,
+        3,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        3,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        3,
+        3,
+        3
+      ],
+      "open": [
+        30,
+        32,
+        30,
+        35,
+        39,
+        40,
+        35,
+        35,
+        35,
+        34,
+        36,
+        37,
+        38,
+        33,
+        31,
+        31,
+        32,
+        34,
+        37,
+        43,
+        55,
+        37,
+        39,
+        42,
+        42,
+        48,
+        55,
+        44,
+        43,
+        46,
+        46,
+        52,
+        55,
+        70,
+        39,
+        32,
+        35,
+        51,
+        57,
+        57,
+        65,
+        44,
+        34,
+        34,
+        42,
+        37,
+        36,
+        37,
+        33,
+        31,
+        33,
+        32,
+        35,
+        35,
+        35,
+        34,
+        33,
+        33,
+        37,
+        57,
+        36,
+        35,
+        31,
+        31,
+        32,
+        33,
+        38,
+        38,
+        43,
+        36,
+        34,
+        35,
+        54,
+        51,
+        56,
+        64,
+        40,
+        36,
+        36,
+        37,
+        39,
+        42,
+        45,
+        36,
+        37,
+        40,
+        41,
+        42,
+        45,
+        47,
+        44,
+        39,
+        44
+      ]
+    },
+    "related_queries": {
+      "top": {
+        "top": [
+          {
+            "query": "top 10",
+            "value": 100
+          },
+          {
+            "query": "top up",
+            "value": 43
+          },
+          {
+            "query": "top movies",
+            "value": 20
+          },
+          {
+            "query": "tank top",
+            "value": 18
+          },
+          {
+            "query": "top gun",
+            "value": 17
+          },
+          {
+            "query": "top news",
+            "value": 13
+          },
+          {
+            "query": "top golf",
+            "value": 12
+          },
+          {
+            "query": "table top",
+            "value": 12
+          },
+          {
+            "query": "crop top",
+            "value": 11
+          },
+          {
+            "query": "top 14",
+            "value": 10
+          },
+          {
+            "query": "top chef",
+            "value": 7
+          },
+          {
+            "query": "top gear",
+            "value": 6
+          },
+          {
+            "query": "top maverick",
+            "value": 5
+          },
+          {
+            "query": "tube top",
+            "value": 5
+          },
+          {
+            "query": "top boy",
+            "value": 5
+          },
+          {
+            "query": "top jobs",
+            "value": 5
+          },
+          {
+            "query": "top gun maverick",
+            "value": 5
+          },
+          {
+            "query": "tip top",
+            "value": 4
+          },
+          {
+            "query": "halter top",
+            "value": 4
+          },
+          {
+            "query": "over the top",
+            "value": 4
+          },
+          {
+            "query": "top form",
+            "value": 4
+          },
+          {
+            "query": "top movies 2025",
+            "value": 3
+          },
+          {
+            "query": "top secret",
+            "value": 3
+          },
+          {
+            "query": "navo top",
+            "value": 3
+          },
+          {
+            "query": "top channel",
+            "value": 3
+          }
+        ],
+        "rising": [
+          {
+            "query": "why is fatrank the top online reputation management agency",
+            "value": 3250
+          },
+          {
+            "query": "top rummy",
+            "value": 1350
+          },
+          {
+            "query": "why is fatrank the top seo agency in the list of b2b lead generation companies in the uk",
+            "value": 1300
+          },
+          {
+            "query": "top spinbet99",
+            "value": 1100
+          },
+          {
+            "query": "american idol top 3",
+            "value": 850
+          },
+          {
+            "query": "finale top 14",
+            "value": 600
+          },
+          {
+            "query": "navo top",
+            "value": 450
+          },
+          {
+            "query": "finale top 14 2025",
+            "value": 350
+          },
+          {
+            "query": "babusar top weather",
+            "value": 350
+          },
+          {
+            "query": "demi finale top 14",
+            "value": 300
+          },
+          {
+            "query": "navo top den haag",
+            "value": 250
+          },
+          {
+            "query": "robux top up",
+            "value": 200
+          },
+          {
+            "query": "top thrill 2",
+            "value": 190
+          },
+          {
+            "query": "top up roblox",
+            "value": 160
+          },
+          {
+            "query": "top news",
+            "value": 80
+          },
+          {
+            "query": "top news today",
+            "value": 80
+          },
+          {
+            "query": "top movies 2025",
+            "value": 70
+          },
+          {
+            "query": "carrot top",
+            "value": 40
+          }
+        ]
+      },
+      "10": {
+        "top": [
+          {
+            "query": "windows 10",
+            "value": 100
+          },
+          {
+            "query": "icd 10",
+            "value": 98
+          },
+          {
+            "query": "weather 10 days",
+            "value": 25
+          },
+          {
+            "query": "download windows 10",
+            "value": 19
+          },
+          {
+            "query": "ben 10",
+            "value": 15
+          },
+          {
+            "query": "note 10",
+            "value": 14
+          },
+          {
+            "query": "\u043f\u043e\u0433\u043e\u0434\u0430 \u043d\u0430 10 \u0434\u043d\u0435\u0439",
+            "value": 13
+          },
+          {
+            "query": "apple watch 10",
+            "value": 11
+          },
+          {
+            "query": "result 2025 class 10",
+            "value": 10
+          },
+          {
+            "query": "windows 11",
+            "value": 10
+          },
+          {
+            "query": "redmi 10",
+            "value": 10
+          },
+          {
+            "query": "10 day forecast",
+            "value": 8
+          },
+          {
+            "query": "iphone 10",
+            "value": 8
+          },
+          {
+            "query": "ipad 10",
+            "value": 7
+          },
+          {
+            "query": "cbse class 10 result",
+            "value": 6
+          },
+          {
+            "query": "redmi note 10",
+            "value": 6
+          },
+          {
+            "query": "apple watch series 10",
+            "value": 6
+          },
+          {
+            "query": "cid 10",
+            "value": 6
+          },
+          {
+            "query": "pixel 10",
+            "value": 5
+          },
+          {
+            "query": "mitre 10",
+            "value": 5
+          },
+          {
+            "query": "windows 10 pro",
+            "value": 5
+          },
+          {
+            "query": "cbse result 2025 class 10",
+            "value": 5
+          },
+          {
+            "query": "10 e lotto",
+            "value": 4
+          },
+          {
+            "query": "iqoo neo 10",
+            "value": 4
+          },
+          {
+            "query": "google pixel 10",
+            "value": 2
+          }
+        ],
+        "rising": [
+          {
+            "query": "e\u015fref r\u00fcya 10 b\u00f6l\u00fcm full izle",
+            "value": 1750
+          },
+          {
+            "query": "10 muharram 2025",
+            "value": 1450
+          },
+          {
+            "query": "40 \u307e\u3067 \u306b \u3057\u305f\u3044 10 \u306e \u3053\u3068",
+            "value": 1050
+          },
+          {
+            "query": "tecno pop 10",
+            "value": 850
+          },
+          {
+            "query": "infinix smart 10",
+            "value": 650
+          },
+          {
+            "query": "xiaomi smart band 10",
+            "value": 600
+          },
+          {
+            "query": "iqoo neo 10",
+            "value": 200
+          },
+          {
+            "query": "cbse.nic.in class 10",
+            "value": 190
+          },
+          {
+            "query": "hoka clifton 10",
+            "value": 180
+          },
+          {
+            "query": "all stars 10",
+            "value": 140
+          },
+          {
+            "query": "cbse class 10 results 2025",
+            "value": 140
+          },
+          {
+            "query": "pixel 10",
+            "value": 130
+          },
+          {
+            "query": "google pixel 10",
+            "value": 130
+          },
+          {
+            "query": "google pixel 10 pro",
+            "value": 130
+          },
+          {
+            "query": "iqoo neo 10 pro",
+            "value": 80
+          },
+          {
+            "query": "cbse result 2025 class 10",
+            "value": 80
+          },
+          {
+            "query": "cbse class 10 result",
+            "value": 70
+          },
+          {
+            "query": "result 2025 class 10",
+            "value": 60
+          },
+          {
+            "query": "10 \u0926\u093f\u0928\u094b\u0902 \u0915\u093e \u092e\u094c\u0938\u092e",
+            "value": 60
+          },
+          {
+            "query": "cbse results class 10 cbse board",
+            "value": 60
+          },
+          {
+            "query": "huawei band 10",
+            "value": 50
+          }
+        ]
+      },
+      "ai": {
+        "top": [
+          {
+            "query": "free ai",
+            "value": 100
+          },
+          {
+            "query": "google ai",
+            "value": 94
+          },
+          {
+            "query": "ai gemini",
+            "value": 82
+          },
+          {
+            "query": "ai generator",
+            "value": 68
+          },
+          {
+            "query": "ai chatgpt",
+            "value": 58
+          },
+          {
+            "query": "ai chat",
+            "value": 56
+          },
+          {
+            "query": "chat ai",
+            "value": 56
+          },
+          {
+            "query": "character ai",
+            "value": 50
+          },
+          {
+            "query": "what is ai",
+            "value": 46
+          },
+          {
+            "query": "ai studio",
+            "value": 38
+          },
+          {
+            "query": "gpt ai",
+            "value": 35
+          },
+          {
+            "query": "open ai",
+            "value": 31
+          },
+          {
+            "query": "ai detector",
+            "value": 31
+          },
+          {
+            "query": "google studio ai",
+            "value": 28
+          },
+          {
+            "query": "claude ai",
+            "value": 26
+          },
+          {
+            "query": "chat gpt ai",
+            "value": 25
+          },
+          {
+            "query": "perplexity ai",
+            "value": 24
+          },
+          {
+            "query": "perplexity",
+            "value": 23
+          },
+          {
+            "query": "meta ai",
+            "value": 22
+          },
+          {
+            "query": "ai mode",
+            "value": 22
+          },
+          {
+            "query": "ai image generator",
+            "value": 20
+          },
+          {
+            "query": "janitor ai",
+            "value": 17
+          },
+          {
+            "query": "grok",
+            "value": 16
+          },
+          {
+            "query": "blackbox ai",
+            "value": 16
+          },
+          {
+            "query": "grok ai",
+            "value": 16
+          }
+        ],
+        "rising": [
+          {
+            "query": "veo 3 ai",
+            "value": 23450
+          },
+          {
+            "query": "veo 3",
+            "value": 22950
+          },
+          {
+            "query": "higgsfield ai",
+            "value": 3400
+          },
+          {
+            "query": "magic light ai",
+            "value": 1100
+          },
+          {
+            "query": "ai mode",
+            "value": 1100
+          },
+          {
+            "query": "google ai pro",
+            "value": 500
+          },
+          {
+            "query": "cross market ai",
+            "value": 450
+          },
+          {
+            "query": "dreamina ai",
+            "value": 250
+          },
+          {
+            "query": "google studio ai",
+            "value": 140
+          },
+          {
+            "query": "hedra ai",
+            "value": 140
+          },
+          {
+            "query": "scale ai",
+            "value": 90
+          },
+          {
+            "query": "agentic ai",
+            "value": 90
+          },
+          {
+            "query": "lovable ai",
+            "value": 70
+          },
+          {
+            "query": "google gemini ai",
+            "value": 70
+          },
+          {
+            "query": "ai studio",
+            "value": 60
+          },
+          {
+            "query": "google gemini",
+            "value": 60
+          },
+          {
+            "query": "cloud ai",
+            "value": 60
+          },
+          {
+            "query": "polybuzz ai",
+            "value": 50
+          },
+          {
+            "query": "google ai",
+            "value": 40
+          },
+          {
+            "query": "heygen ai",
+            "value": 40
+          }
+        ]
+      },
+      "agents": {
+        "top": [
+          {
+            "query": "estate agents",
+            "value": 100
+          },
+          {
+            "query": "ai agents",
+            "value": 35
+          },
+          {
+            "query": "real estate agents",
+            "value": 31
+          },
+          {
+            "query": "real estate",
+            "value": 30
+          },
+          {
+            "query": "free agents",
+            "value": 25
+          },
+          {
+            "query": "travel agents",
+            "value": 16
+          },
+          {
+            "query": "ice agents",
+            "value": 15
+          },
+          {
+            "query": "insurance agents",
+            "value": 11
+          },
+          {
+            "query": "agents of shield",
+            "value": 10
+          },
+          {
+            "query": "free agents nba",
+            "value": 8
+          },
+          {
+            "query": "letting agents",
+            "value": 5
+          },
+          {
+            "query": "nhl free agents",
+            "value": 4
+          },
+          {
+            "query": "free agents nba 2025",
+            "value": 4
+          },
+          {
+            "query": "openai agents",
+            "value": 4
+          },
+          {
+            "query": "chatgpt agents",
+            "value": 3
+          },
+          {
+            "query": "ai agent",
+            "value": 3
+          },
+          {
+            "query": "valorant agents",
+            "value": 3
+          },
+          {
+            "query": "agents of time",
+            "value": 3
+          },
+          {
+            "query": "estate agents near me",
+            "value": 3
+          },
+          {
+            "query": "rightmove",
+            "value": 3
+          },
+          {
+            "query": "2025 nhl free agents",
+            "value": 3
+          },
+          {
+            "query": "what are ai agents",
+            "value": 2
+          },
+          {
+            "query": "copilot agents",
+            "value": 2
+          },
+          {
+            "query": "top real estate agents",
+            "value": 2
+          },
+          {
+            "query": "nfl free agents",
+            "value": 2
+          }
+        ],
+        "rising": [
+          {
+            "query": "ice agents quitting",
+            "value": 6700
+          },
+          {
+            "query": "federal agents macarthur park",
+            "value": 3900
+          },
+          {
+            "query": "bbc connells estate agents",
+            "value": 2350
+          },
+          {
+            "query": "strands agents",
+            "value": 900
+          },
+          {
+            "query": "allstate agents near me",
+            "value": 550
+          },
+          {
+            "query": "how much do ice agents make",
+            "value": 450
+          },
+          {
+            "query": "ice agents",
+            "value": 300
+          },
+          {
+            "query": "2026 nhl free agents",
+            "value": 300
+          },
+          {
+            "query": "nba free agency",
+            "value": 200
+          },
+          {
+            "query": "how many ice agents are there",
+            "value": 190
+          },
+          {
+            "query": "ai agents vs agentic ai",
+            "value": 170
+          },
+          {
+            "query": "nhl free agents",
+            "value": 160
+          },
+          {
+            "query": "what are ice agents",
+            "value": 160
+          },
+          {
+            "query": "chatgpt agents",
+            "value": 150
+          },
+          {
+            "query": "2025 nhl free agents",
+            "value": 140
+          },
+          {
+            "query": "connells estate agents",
+            "value": 130
+          },
+          {
+            "query": "top nba free agents 2025",
+            "value": 90
+          },
+          {
+            "query": "mlb free agents 2026",
+            "value": 90
+          },
+          {
+            "query": "agentic ai",
+            "value": 90
+          },
+          {
+            "query": "openai agents",
+            "value": 80
+          },
+          {
+            "query": "top nhl free agents 2025",
+            "value": 80
+          },
+          {
+            "query": "the news agents",
+            "value": 70
+          },
+          {
+            "query": "free agents nba",
+            "value": 70
+          },
+          {
+            "query": "n8n",
+            "value": 70
+          },
+          {
+            "query": "what are ai agents",
+            "value": 70
+          }
+        ]
+      },
+      "open": {
+        "top": [
+          {
+            "query": "the open",
+            "value": 100
+          },
+          {
+            "query": "french open",
+            "value": 42
+          },
+          {
+            "query": "us open",
+            "value": 40
+          },
+          {
+            "query": "open ai",
+            "value": 19
+          },
+          {
+            "query": "open golf",
+            "value": 13
+          },
+          {
+            "query": "french open 2025",
+            "value": 12
+          },
+          {
+            "query": "open university",
+            "value": 11
+          },
+          {
+            "query": "open leaderboard",
+            "value": 11
+          },
+          {
+            "query": "the open 2025",
+            "value": 10
+          },
+          {
+            "query": "us open 2025",
+            "value": 9
+          },
+          {
+            "query": "open house",
+            "value": 9
+          },
+          {
+            "query": "open youtube",
+            "value": 9
+          },
+          {
+            "query": "open office",
+            "value": 7
+          },
+          {
+            "query": "us open golf",
+            "value": 7
+          },
+          {
+            "query": "food open near me",
+            "value": 7
+          },
+          {
+            "query": "open stock",
+            "value": 6
+          },
+          {
+            "query": "us open leaderboard",
+            "value": 6
+          },
+          {
+            "query": "british open",
+            "value": 6
+          },
+          {
+            "query": "rome open",
+            "value": 5
+          },
+          {
+            "query": "open championship",
+            "value": 5
+          },
+          {
+            "query": "kalyan open",
+            "value": 5
+          },
+          {
+            "query": "open english",
+            "value": 4
+          },
+          {
+            "query": "italian open",
+            "value": 4
+          },
+          {
+            "query": "roma open",
+            "value": 4
+          },
+          {
+            "query": "scottish open",
+            "value": 4
+          }
+        ],
+        "rising": [
+          {
+            "query": "us open leaderboard",
+            "value": 7450
+          },
+          {
+            "query": "open di francia",
+            "value": 7250
+          },
+          {
+            "query": "scottish open leaderboard",
+            "value": 6250
+          },
+          {
+            "query": "japan open badminton 2025",
+            "value": 5750
+          },
+          {
+            "query": "china open badminton 2025",
+            "value": 5100
+          },
+          {
+            "query": "halle open",
+            "value": 5050
+          },
+          {
+            "query": "us open leaderboard 2025",
+            "value": 4800
+          },
+          {
+            "query": "british open leaderboard",
+            "value": 4350
+          },
+          {
+            "query": "halle open 2025",
+            "value": 4300
+          },
+          {
+            "query": "indonesia open 2025",
+            "value": 4150
+          },
+          {
+            "query": "mubadala citi dc open",
+            "value": 4100
+          },
+          {
+            "query": "french open results",
+            "value": 3450
+          },
+          {
+            "query": "bad homburg open",
+            "value": 3000
+          },
+          {
+            "query": "canadian open tennis",
+            "value": 2950
+          },
+          {
+            "query": "genesis scottish open",
+            "value": 2600
+          },
+          {
+            "query": "french open 2025 spielplan",
+            "value": 2550
+          },
+          {
+            "query": "lexus eastbourne open",
+            "value": 2550
+          },
+          {
+            "query": "french open 2025",
+            "value": 2550
+          },
+          {
+            "query": "terra wortmann open",
+            "value": 2300
+          },
+          {
+            "query": "french open",
+            "value": 2200
+          },
+          {
+            "query": "french open schedule",
+            "value": 1850
+          },
+          {
+            "query": "the open leaderboard",
+            "value": 1800
+          },
+          {
+            "query": "scottish open",
+            "value": 1650
+          },
+          {
+            "query": "citi open 2025",
+            "value": 1600
+          },
+          {
+            "query": "french open tennis",
+            "value": 1500
+          }
+        ]
+      }
+    },
+    "trends_error": "The request failed: Google returned a response with code 404",
+    "reddit_discussions": [
+      {
+        "title": "The only guide you'll need to master AI Agents in 2025. I distilled 10 essential GitHub repos into a 4-stage \"Open-Source University\" program.  These 10 FREE GitHub repos taught me everything about building AI Agents. Here's the definitive ranking and a full learning plan.",
+        "score": 130,
+        "comments": 11
+      },
+      {
+        "title": "This Open-Source AI Agent is Better than Manus AI",
+        "score": 10,
+        "comments": 0
+      },
+      {
+        "title": "The Ultimate Guide to Top AI Agents for Business in 2025",
+        "score": 7,
+        "comments": 1
+      },
+      {
+        "title": "July 2025 Revenue Source for OpenAI and Anthropic",
+        "score": 110,
+        "comments": 10
+      },
+      {
+        "title": "10 Modern AI Agent Protocols: Standardizing AI Communication in 2025",
+        "score": 4,
+        "comments": 0
+      }
+    ],
+    "news_error": "URL can't contain control characters. '/rss/search?q=top 10 ai agents open source in 2025 &hl=en-US&gl=US&ceid=US:en' (found at least ' ')",
+    "wikipedia_trending": [
+      {
+        "views": 1174171,
+        "rank": 2,
+        "view_history": [
+          {
+            "date": "2023-12-27Z",
+            "views": 6347
+          },
+          {
+            "date": "2023-12-28Z",
+            "views": 7816
+          },
+          {
+            "date": "2023-12-29Z",
+            "views": 11461
+          },
+          {
+            "date": "2023-12-30Z",
+            "views": 119246
+          },
+          {
+            "date": "2023-12-31Z",
+            "views": 1174171
+          }
+        ],
+        "type": "standard",
+        "title": "New_Year's_Eve",
+        "displaytitle": "<span class=\"mw-page-title-main\">New Year&#039;s Eve</span>",
+        "namespace": {
+          "id": 0,
+          "text": ""
+        },
+        "wikibase_item": "Q11269",
+        "titles": {
+          "canonical": "New_Year's_Eve",
+          "normalized": "New Year's Eve",
+          "display": "<span class=\"mw-page-title-main\">New Year&#039;s Eve</span>"
+        },
+        "pageid": 277922,
+        "thumbnail": {
+          "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Fireworks_on_New_Year%27s_Eve_in_a_small_Swabian_village_%281%29%2C_brightened.jpg/330px-Fireworks_on_New_Year%27s_Eve_in_a_small_Swabian_village_%281%29%2C_brightened.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "originalimage": {
+          "source": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Fireworks_on_New_Year%27s_Eve_in_a_small_Swabian_village_%281%29%2C_brightened.jpg",
+          "width": 6366,
+          "height": 3581
+        },
+        "lang": "en",
+        "dir": "ltr",
+        "revision": "1303088768",
+        "tid": "25a76d5e-6c1f-11f0-b23b-799d34357c0b",
+        "timestamp": "2025-07-29T01:55:48Z",
+        "description": "Last day of the Gregorian year",
+        "description_source": "local",
+        "content_urls": {
+          "desktop": {
+            "page": "https://en.wikipedia.org/wiki/New_Year's_Eve",
+            "revisions": "https://en.wikipedia.org/wiki/New_Year's_Eve?action=history",
+            "edit": "https://en.wikipedia.org/wiki/New_Year's_Eve?action=edit",
+            "talk": "https://en.wikipedia.org/wiki/Talk:New_Year's_Eve"
+          },
+          "mobile": {
+            "page": "https://en.m.wikipedia.org/wiki/New_Year's_Eve",
+            "revisions": "https://en.m.wikipedia.org/wiki/Special:History/New_Year's_Eve",
+            "edit": "https://en.m.wikipedia.org/wiki/New_Year's_Eve?action=edit",
+            "talk": "https://en.m.wikipedia.org/wiki/Talk:New_Year's_Eve"
+          }
+        },
+        "extract": "In the Gregorian calendar, New Year's Eve refers to the evening, or commonly the entire day, of the last day of the year, 31 December, also known as Old Year's Day. In many countries, New Year's Eve is celebrated with dancing, eating, drinking, and watching or lighting fireworks. Many Christians attend a watchnight service to mark the occasion. New Year's Eve celebrations generally continue into New Year's Day, 1 January, past midnight.",
+        "extract_html": "<p>In the Gregorian calendar, <b>New Year's Eve</b> refers to the evening, or commonly the entire day, of the last day of the year, 31 December, also known as <b>Old Year's Day</b>. In many countries, New Year's Eve is celebrated with dancing, eating, drinking, and watching or lighting fireworks. Many Christians attend a watchnight service to mark the occasion. New Year's Eve celebrations generally continue into New Year's Day, 1 January, past midnight.</p>",
+        "normalizedtitle": "New Year's Eve"
+      },
+      {
+        "views": 431569,
+        "rank": 4,
+        "view_history": [
+          {
+            "date": "2023-12-27Z",
+            "views": 4279
+          },
+          {
+            "date": "2023-12-28Z",
+            "views": 3447
+          },
+          {
+            "date": "2023-12-29Z",
+            "views": 3814
+          },
+          {
+            "date": "2023-12-30Z",
+            "views": 5318
+          },
+          {
+            "date": "2023-12-31Z",
+            "views": 431569
+          }
+        ],
+        "type": "standard",
+        "title": "Jimmy_Johnson_(American_football_coach)",
+        "displaytitle": "<span class=\"mw-page-title-main\">Jimmy Johnson (American football coach)</span>",
+        "namespace": {
+          "id": 0,
+          "text": ""
+        },
+        "wikibase_item": "Q4353509",
+        "titles": {
+          "canonical": "Jimmy_Johnson_(American_football_coach)",
+          "normalized": "Jimmy Johnson (American football coach)",
+          "display": "<span class=\"mw-page-title-main\">Jimmy Johnson (American football coach)</span>"
+        },
+        "pageid": 327892,
+        "thumbnail": {
+          "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Jimmy_Johnson_2022_%28cropped%29.jpg/330px-Jimmy_Johnson_2022_%28cropped%29.jpg",
+          "width": 320,
+          "height": 427
+        },
+        "originalimage": {
+          "source": "https://upload.wikimedia.org/wikipedia/commons/0/07/Jimmy_Johnson_2022_%28cropped%29.jpg",
+          "width": 1621,
+          "height": 2163
+        },
+        "lang": "en",
+        "dir": "ltr",
+        "revision": "1301068666",
+        "tid": "87cfb87e-6361-11f0-b207-2c2fc9b0c669",
+        "timestamp": "2025-07-17T22:58:19Z",
+        "description": "American football broadcaster, coach and executive (born 1943)",
+        "description_source": "local",
+        "content_urls": {
+          "desktop": {
+            "page": "https://en.wikipedia.org/wiki/Jimmy_Johnson_(American_football_coach)",
+            "revisions": "https://en.wikipedia.org/wiki/Jimmy_Johnson_(American_football_coach)?action=history",
+            "edit": "https://en.wikipedia.org/wiki/Jimmy_Johnson_(American_football_coach)?action=edit",
+            "talk": "https://en.wikipedia.org/wiki/Talk:Jimmy_Johnson_(American_football_coach)"
+          },
+          "mobile": {
+            "page": "https://en.m.wikipedia.org/wiki/Jimmy_Johnson_(American_football_coach)",
+            "revisions": "https://en.m.wikipedia.org/wiki/Special:History/Jimmy_Johnson_(American_football_coach)",
+            "edit": "https://en.m.wikipedia.org/wiki/Jimmy_Johnson_(American_football_coach)?action=edit",
+            "talk": "https://en.m.wikipedia.org/wiki/Talk:Jimmy_Johnson_(American_football_coach)"
+          }
+        },
+        "extract": "James William Johnson is an American former sports analyst and football coach. Johnson served as a head football coach in the collegiate level from 1979 to 1988 and in the National Football League (NFL) for nine seasons. He is the first head football coach to win both a college football national championship and a Super Bowl, achieving the former with University of Miami and the latter with the Dallas Cowboys.",
+        "extract_html": "<p><b>James William Johnson</b> is an American former sports analyst and football coach. Johnson served as a head football coach in the collegiate level from 1979 to 1988 and in the National Football League (NFL) for nine seasons. He is the first head football coach to win both a college football national championship and a Super Bowl, achieving the former with University of Miami and the latter with the Dallas Cowboys.</p>",
+        "normalizedtitle": "Jimmy Johnson (American football coach)"
+      },
+      {
+        "views": 410010,
+        "rank": 5,
+        "view_history": [
+          {
+            "date": "2023-12-27Z",
+            "views": 157693
+          },
+          {
+            "date": "2023-12-28Z",
+            "views": 506042
+          },
+          {
+            "date": "2023-12-29Z",
+            "views": 877654
+          },
+          {
+            "date": "2023-12-30Z",
+            "views": 835191
+          },
+          {
+            "date": "2023-12-31Z",
+            "views": 410010
+          }
+        ],
+        "type": "standard",
+        "title": "Murder_of_Dee_Dee_Blanchard",
+        "displaytitle": "<span class=\"mw-page-title-main\">Murder of Dee Dee Blanchard</span>",
+        "namespace": {
+          "id": 0,
+          "text": ""
+        },
+        "wikibase_item": "Q30325337",
+        "titles": {
+          "canonical": "Murder_of_Dee_Dee_Blanchard",
+          "normalized": "Murder of Dee Dee Blanchard",
+          "display": "<span class=\"mw-page-title-main\">Murder of Dee Dee Blanchard</span>"
+        },
+        "pageid": 54162498,
+        "thumbnail": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/a/a5/Dee_Dee_Blanchard.jpg",
+          "width": 204,
+          "height": 180
+        },
+        "originalimage": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/a/a5/Dee_Dee_Blanchard.jpg",
+          "width": 204,
+          "height": 180
+        },
+        "lang": "en",
+        "dir": "ltr",
+        "revision": "1303349907",
+        "tid": "9b0f5c0a-6d49-11f0-b044-b2610a08a0db",
+        "timestamp": "2025-07-30T13:32:15Z",
+        "description": "2015 matricide in Missouri, U.S.",
+        "description_source": "local",
+        "coordinates": {
+          "lat": 37.2668,
+          "lon": -93.3182
+        },
+        "content_urls": {
+          "desktop": {
+            "page": "https://en.wikipedia.org/wiki/Murder_of_Dee_Dee_Blanchard",
+            "revisions": "https://en.wikipedia.org/wiki/Murder_of_Dee_Dee_Blanchard?action=history",
+            "edit": "https://en.wikipedia.org/wiki/Murder_of_Dee_Dee_Blanchard?action=edit",
+            "talk": "https://en.wikipedia.org/wiki/Talk:Murder_of_Dee_Dee_Blanchard"
+          },
+          "mobile": {
+            "page": "https://en.m.wikipedia.org/wiki/Murder_of_Dee_Dee_Blanchard",
+            "revisions": "https://en.m.wikipedia.org/wiki/Special:History/Murder_of_Dee_Dee_Blanchard",
+            "edit": "https://en.m.wikipedia.org/wiki/Murder_of_Dee_Dee_Blanchard?action=edit",
+            "talk": "https://en.m.wikipedia.org/wiki/Talk:Murder_of_Dee_Dee_Blanchard"
+          }
+        },
+        "extract": "Clauddine \"Dee Dee\" Blanchard was a 48-year-old woman who was found stabbed to death in her Springfield, Missouri, house in June 2015. She was murdered by Nicholas Godejohn. The murder was planned by Godejohn and her daughter, Gypsy-Rose Blanchard.",
+        "extract_html": "<p><b>Clauddine</b> \"<b>Dee Dee</b>\" <b>Blanchard</b> was a 48-year-old woman who was found stabbed to death in her Springfield, Missouri, house in June 2015. She was murdered by Nicholas Godejohn. The murder was planned by Godejohn and her daughter, Gypsy-Rose Blanchard.</p>",
+        "normalizedtitle": "Murder of Dee Dee Blanchard"
+      },
+      {
+        "views": 358705,
+        "rank": 6,
+        "view_history": [
+          {
+            "date": "2023-12-27Z",
+            "views": 49
+          },
+          {
+            "date": "2023-12-28Z",
+            "views": 42
+          },
+          {
+            "date": "2023-12-29Z",
+            "views": 34
+          },
+          {
+            "date": "2023-12-30Z",
+            "views": 20
+          },
+          {
+            "date": "2023-12-31Z",
+            "views": 358705
+          }
+        ],
+        "type": "standard",
+        "title": "DDoS-Guard",
+        "displaytitle": "<span class=\"mw-page-title-main\">DDoS-Guard</span>",
+        "namespace": {
+          "id": 0,
+          "text": ""
+        },
+        "wikibase_item": "Q25383150",
+        "titles": {
+          "canonical": "DDoS-Guard",
+          "normalized": "DDoS-Guard",
+          "display": "<span class=\"mw-page-title-main\">DDoS-Guard</span>"
+        },
+        "pageid": 66430515,
+        "thumbnail": {
+          "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/DDoS-Guard_logo.svg/330px-DDoS-Guard_logo.svg.png",
+          "width": 320,
+          "height": 373
+        },
+        "originalimage": {
+          "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/DDoS-Guard_logo.svg/512px-DDoS-Guard_logo.svg.png",
+          "width": 512,
+          "height": 597
+        },
+        "lang": "en",
+        "dir": "ltr",
+        "revision": "1283993105",
+        "tid": "37fc249e-11a6-11f0-8271-6655d81ac1b2",
+        "timestamp": "2025-04-04T22:43:25Z",
+        "description": "Russian-owned Internet infrastructure services provider",
+        "description_source": "local",
+        "content_urls": {
+          "desktop": {
+            "page": "https://en.wikipedia.org/wiki/DDoS-Guard",
+            "revisions": "https://en.wikipedia.org/wiki/DDoS-Guard?action=history",
+            "edit": "https://en.wikipedia.org/wiki/DDoS-Guard?action=edit",
+            "talk": "https://en.wikipedia.org/wiki/Talk:DDoS-Guard"
+          },
+          "mobile": {
+            "page": "https://en.m.wikipedia.org/wiki/DDoS-Guard",
+            "revisions": "https://en.m.wikipedia.org/wiki/Special:History/DDoS-Guard",
+            "edit": "https://en.m.wikipedia.org/wiki/DDoS-Guard?action=edit",
+            "talk": "https://en.m.wikipedia.org/wiki/Talk:DDoS-Guard"
+          }
+        },
+        "extract": "DDoS-Guard is a Russian Internet infrastructure company which provides DDoS protection and web hosting services. Researchers and journalists have alleged that many of DDoS-Guard's clients are engaged in criminal activity, and investigative reporter Brian Krebs reported in January 2021 that a \"vast number\" of the websites hosted by DDoS-Guard are \"phishing sites and domains tied to cybercrime services or forums online\". Some of DDoS-Guard's notable clients have included American alt-tech social network Parler, and various groups associated with the Russian state.",
+        "extract_html": "<p><b>DDoS-Guard</b> is a Russian Internet infrastructure company which provides DDoS protection and web hosting services. Researchers and journalists have alleged that many of DDoS-Guard's clients are engaged in criminal activity, and investigative reporter Brian Krebs reported in January 2021 that a \"vast number\" of the websites hosted by DDoS-Guard are \"phishing sites and domains tied to cybercrime services or forums online\". Some of DDoS-Guard's notable clients have included American alt-tech social network Parler, and various groups associated with the Russian state.</p>",
+        "normalizedtitle": "DDoS-Guard"
+      },
+      {
+        "views": 358004,
+        "rank": 7,
+        "view_history": [
+          {
+            "date": "2023-12-27Z",
+            "views": 389373
+          },
+          {
+            "date": "2023-12-28Z",
+            "views": 392074
+          },
+          {
+            "date": "2023-12-29Z",
+            "views": 412369
+          },
+          {
+            "date": "2023-12-30Z",
+            "views": 414679
+          },
+          {
+            "date": "2023-12-31Z",
+            "views": 358004
+          }
+        ],
+        "type": "standard",
+        "title": "Saltburn_(film)",
+        "displaytitle": "<i>Saltburn</i> (film)",
+        "namespace": {
+          "id": 0,
+          "text": ""
+        },
+        "wikibase_item": "Q113135527",
+        "titles": {
+          "canonical": "Saltburn_(film)",
+          "normalized": "Saltburn (film)",
+          "display": "<i>Saltburn</i> (film)"
+        },
+        "pageid": 70757629,
+        "thumbnail": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/5/52/Saltburn_Film_Poster.jpg",
+          "width": 259,
+          "height": 384
+        },
+        "originalimage": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/5/52/Saltburn_Film_Poster.jpg",
+          "width": 259,
+          "height": 384
+        },
+        "lang": "en",
+        "dir": "ltr",
+        "revision": "1304299502",
+        "tid": "2612abdc-71bd-11f0-86e8-2576b1814912",
+        "timestamp": "2025-08-05T05:29:25Z",
+        "description": "2023 film by Emerald Fennell",
+        "description_source": "local",
+        "content_urls": {
+          "desktop": {
+            "page": "https://en.wikipedia.org/wiki/Saltburn_(film)",
+            "revisions": "https://en.wikipedia.org/wiki/Saltburn_(film)?action=history",
+            "edit": "https://en.wikipedia.org/wiki/Saltburn_(film)?action=edit",
+            "talk": "https://en.wikipedia.org/wiki/Talk:Saltburn_(film)"
+          },
+          "mobile": {
+            "page": "https://en.m.wikipedia.org/wiki/Saltburn_(film)",
+            "revisions": "https://en.m.wikipedia.org/wiki/Special:History/Saltburn_(film)",
+            "edit": "https://en.m.wikipedia.org/wiki/Saltburn_(film)?action=edit",
+            "talk": "https://en.m.wikipedia.org/wiki/Talk:Saltburn_(film)"
+          }
+        },
+        "extract": "Saltburn is a 2023 black comedy thriller film written, directed, and co-produced by Emerald Fennell, starring Barry Keoghan, Jacob Elordi, Rosamund Pike, Richard E. Grant, Alison Oliver, Archie Madekwe and Carey Mulligan. Set in Oxford and Northamptonshire, it focuses on a student at Oxford who becomes fixated with a popular, aristocratic fellow student, who later invites him to spend the summer at his eccentric family's estate.",
+        "extract_html": "<p><i><b>Saltburn</b></i> is a 2023 black comedy thriller film written, directed, and co-produced by Emerald Fennell, starring Barry Keoghan, Jacob Elordi, Rosamund Pike, Richard E. Grant, Alison Oliver, Archie Madekwe and Carey Mulligan. Set in Oxford and Northamptonshire, it focuses on a student at Oxford who becomes fixated with a popular, aristocratic fellow student, who later invites him to spend the summer at his eccentric family's estate.</p>",
+        "normalizedtitle": "Saltburn (film)"
+      }
+    ],
+    "ai_trend_analysis": {
+      "response": "Error: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods."
+    }
+  }
+}

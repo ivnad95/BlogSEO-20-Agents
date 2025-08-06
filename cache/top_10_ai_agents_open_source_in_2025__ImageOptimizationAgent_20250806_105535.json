@@ -1,0 +1,53 @@
+{
+  "agent": "ImageOptimizationAgent",
+  "topic": "top 10 ai agents open source in 2025 ",
+  "timestamp": "2025-08-06T10:55:35.371732",
+  "output": {
+    "hero_image": {
+      "description": "Visually represent the concept of 'AI Agents' operating within a futuristic, interconnected network.  Showcase diverse AI agents (represented abstractly or through stylized icons) collaborating or performing tasks.  The scene should evoke intelligence, autonomy, and openness (open source).  Consider a grid-like structure with nodes representing agents and lines showing communication.  A subtle glow or vibrant color palette can emphasize the 'AI' aspect.",
+      "keywords": [
+        "AI Agents",
+        "Open Source AI",
+        "Autonomous Agents",
+        "Artificial Intelligence",
+        "AI Collaboration",
+        "2025 Technology",
+        "Future of AI",
+        "Intelligent Systems",
+        "AI Network"
+      ]
+    },
+    "supporting_images": [
+      {
+        "type": "infographic",
+        "content": "A comparison table showcasing the top 10 AI agents. Columns should include: Agent Name, Description (brief), Key Features, Programming Language, License (e.g., MIT, Apache 2.0), Use Cases (examples), and Community Support Level (e.g., High, Medium, Low).  Visual cues like progress bars for community support and icons for programming languages will enhance readability.",
+        "alt_text": "Top 10 Open Source AI Agents in 2025: Comparison of Features, License, and Use Cases"
+      },
+      {
+        "type": "example_screenshot",
+        "content": "Screenshots of the user interface or code snippets from 2-3 of the most prominent AI agents on the list.  Highlight specific functionalities or code structures that demonstrate the agent's capabilities.  Add captions to explain what is being shown.",
+        "alt_text": "Example Code Snippet from [AI Agent Name]: Demonstrating [Specific Functionality]"
+      },
+      {
+        "type": "diagram",
+        "content": "A simplified architectural diagram illustrating the general structure of a typical AI agent.  Show key components like perception, planning, action, knowledge base, and learning module.  Use clear labels and arrows to indicate data flow and interaction between modules. Consider using a consistent color scheme.",
+        "alt_text": "AI Agent Architecture Diagram: Illustrating the Key Components and Data Flow"
+      },
+      {
+        "type": "visual_metaphor",
+        "content": "Use a visual metaphor to represent the 'open source' aspect of AI agents.  Examples include: a blooming flower (representing growth and accessibility), a collaborative jigsaw puzzle (representing community contribution), or a transparent box (representing transparency and inspectability).",
+        "alt_text": "Open Source AI Agents: Visual Metaphor Representing Transparency and Community Contribution"
+      },
+      {
+        "type": "use_case_illustration",
+        "content": "Illustrate a specific use case of one of the AI agents. This could be a stylized image showing the agent being used in a particular industry (e.g., healthcare, finance, manufacturing). Focus on showcasing the benefits and impact of the agent in that context.",
+        "alt_text": "[AI Agent Name] Use Case: [Specific Industry] Application for [Specific Benefit]"
+      }
+    ],
+    "image_seo": {
+      "file_naming": "ai-agent-[agent-name]-[keyword].jpg (e.g., ai-agent-autogen-collaboration.jpg, ai-agent-babyagi-autonomous.jpg). Use dashes instead of spaces. Keep file names concise and descriptive.",
+      "compression": "Use aggressive compression techniques (e.g., TinyPNG, ImageOptim) to reduce file size without significantly sacrificing visual quality. Aim for images under 200KB, ideally closer to 100KB for faster page loading. Optimize images for web use (sRGB color space, progressive JPEGs)."
+    },
+    "visual_hierarchy": "Start with the compelling hero image to grab attention. Place the infographic strategically within the content to provide a quick overview. Use example screenshots and diagrams to support technical explanations. Break up long blocks of text with visual metaphors and use case illustrations. Ensure all images are appropriately sized and aligned with the surrounding text. Use captions consistently to provide context and improve accessibility.  Maintain a consistent visual style (color palette, font choices) across all images to create a cohesive and professional look."
+  }
+}

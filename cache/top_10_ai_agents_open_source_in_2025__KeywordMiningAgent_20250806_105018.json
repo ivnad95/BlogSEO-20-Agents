@@ -1,0 +1,22 @@
+{
+  "agent": "KeywordMiningAgent",
+  "topic": "top 10 ai agents open source in 2025 ",
+  "timestamp": "2025-08-06T10:50:18.609867",
+  "output": {
+    "google_suggestions": [],
+    "related_queries": [
+      "top",
+      "10",
+      "ai",
+      "agents",
+      "open"
+    ],
+    "response": "Error: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+    "total_keywords_found": 5,
+    "keyword_density_recommendations": {
+      "primary": "2-3%",
+      "secondary": "1-2%",
+      "semantic": "0.5-1%"
+    }
+  }
+}

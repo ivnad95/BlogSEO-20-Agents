@@ -1,0 +1,43 @@
+{
+  "agent": "InternalLinkingAgent",
+  "topic": "top 10 ai agents open source in 2025 ",
+  "timestamp": "2025-08-06T10:55:20.065465",
+  "output": {
+    "pillar_pages": [
+      "ai-agents-platform",
+      "open-source-ai-tools",
+      "ai-in-2025-trends"
+    ],
+    "supporting_pages": [
+      "ai-agent-frameworks-comparison",
+      "autonomous-ai-agents-examples",
+      "best-programming-languages-for-ai-agents",
+      "ai-agent-security-considerations",
+      "future-of-ai-agent-development",
+      "how-to-build-ai-agent",
+      "ai-agent-use-cases",
+      "top-ai-research-papers-2024",
+      "ai-ethics-and-responsible-ai-development"
+    ],
+    "anchor_text_variations": [
+      "AI agents",
+      "open source AI agents",
+      "top AI agents",
+      "AI agents in 2025",
+      "open source AI agent platforms",
+      "autonomous AI agents",
+      "intelligent agents",
+      "AI agent frameworks",
+      "best AI agents",
+      "leading AI agents"
+    ],
+    "link_placement": [
+      "Introduction",
+      "Body paragraphs (especially when mentioning a specific agent or concept)",
+      "Conclusion",
+      "Within the description of each AI agent in the list",
+      "In the 'Learn More' or 'Related Resources' section (if applicable)"
+    ],
+    "link_flow": "The primary link flow should be from 'top 10 ai agents open source in 2025' to the pillar pages ('ai-agents-platform', 'open-source-ai-tools', 'ai-in-2025-trends') to establish topical authority.  Links should also flow to relevant supporting pages to provide more in-depth information on specific concepts, tools, or frameworks mentioned.  Supporting pages should link back to the 'top 10 ai agents open source in 2025' page where relevant, creating a reciprocal linking structure."
+  }
+}

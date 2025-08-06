@@ -1,0 +1,27 @@
+{
+  "agent": "KeywordEnrichmentAgent",
+  "topic": "top 10 ai agents open source in 2025 ",
+  "timestamp": "2025-08-06T10:55:02.967262",
+  "output": {
+    "keyword_placements": {
+      "AI agents open source 2025": "In the introduction, naturally integrate as a key trend, e.g., '...with AI agents at the forefront. The increasing availability of **AI agents open source 2025** is democratizing access...'",
+      "top AI agents open source": "Use as a subheading before diving into the list, e.g., 'Our Selection Criteria for the **Top AI Agents Open Source**'",
+      "best open source AI agents": "In the introduction, rephrase 'sophisticated automation' to 'sophisticated automation provided by the **best open source AI agents**'.",
+      "open source autonomous agents": "Within a section discussing the capabilities of AI agents, e.g., 'These platforms allow for the development of **open source autonomous agents** capable of...',",
+      "AI agent frameworks open source": "In the section discussing frameworks, e.g., 'Several **AI agent frameworks open source** are gaining traction, including...'",
+      "top 10 AI agents": "Keep this in the title and use as a subheading to introduce the list itself.",
+      "open source AI tools 2025": "In a section describing the tools used to build or support these agents, e.g., 'The development of these agents is also facilitated by a range of **open source AI tools 2025**, such as...'",
+      "best AI agents 2025": "Use when describing the overall impact, e.g., '...these advancements position the **best AI agents 2025** as key drivers of innovation.'",
+      "free AI agents open source": "Mention when discussing accessibility and cost-effectiveness, e.g., '...making sophisticated automation more accessible through **free AI agents open source**.'",
+      "AI agent platforms open source": "In a section describing the infrastructure, e.g., '...built upon robust **AI agent platforms open source** that offer scalability and flexibility.'"
+    },
+    "density_optimization": "Avoid keyword stuffing. Focus on natural language. Use LSI keywords (semantically related terms). Distribute keywords throughout the content, prioritizing introduction, subheadings, and conclusion.  Aim for a keyword density of around 1-2% per keyword, but prioritize readability.",
+    "semantic_variations": [
+      "open-source AI agent",
+      "AI-powered autonomous agent",
+      "open source artificial intelligence agent",
+      "AI automation agent",
+      "autonomous AI agents"
+    ]
+  }
+}

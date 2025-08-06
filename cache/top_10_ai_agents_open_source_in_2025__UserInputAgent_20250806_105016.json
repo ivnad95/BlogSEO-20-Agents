@@ -1,0 +1,24 @@
+{
+  "agent": "UserInputAgent",
+  "topic": "top 10 ai agents open source in 2025 ",
+  "timestamp": "2025-08-06T10:50:16.380915",
+  "output": {
+    "topic_confirmed": "top 10 ai agents open source in 2025 ",
+    "target_word_count": 2000,
+    "tone": "professional",
+    "target_audience": "general audience interested in top 10 ai agents open source in 2025 ",
+    "content_type": "informational blog post",
+    "seo_focus": true,
+    "include_images": true,
+    "trending_topics_to_include": [],
+    "related_queries_to_address": [
+      "top",
+      "10",
+      "ai",
+      "agents",
+      "open"
+    ],
+    "call_to_action": "Subscribe for more content",
+    "brand_voice": "informative and engaging"
+  }
+}

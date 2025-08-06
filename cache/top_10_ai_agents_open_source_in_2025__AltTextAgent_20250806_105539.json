@@ -1,0 +1,48 @@
+{
+  "agent": "AltTextAgent",
+  "topic": "top 10 ai agents open source in 2025 ",
+  "timestamp": "2025-08-06T10:55:39.167946",
+  "output": {
+    "alt_texts": [
+      {
+        "image": "hero_image",
+        "alt": "Futuristic AI agent network. Abstract icons represent autonomous, open-source AI agents collaborating and communicating within a glowing, interconnected grid.",
+        "title": "AI Agents: Autonomous Open Source Collaboration"
+      },
+      {
+        "image": "infographic",
+        "alt": "Top 10 Open Source AI Agents in 2025: Comparison of Features, Licenses (MIT, Apache 2.0), Use Cases, Community Support, and Programming Languages.",
+        "title": "Open Source AI Agent Comparison"
+      },
+      {
+        "image": "example_screenshot",
+        "alt": "Example Code Snippet from [AI Agent Name]: Demonstrating [Specific Functionality], such as [brief explanation of functionality].",
+        "title": "[AI Agent Name] Code Example"
+      },
+      {
+        "image": "diagram",
+        "alt": "AI Agent Architecture Diagram: illustrating data flow between key components like perception, planning, action, knowledge base, and learning module.",
+        "title": "AI Agent Architecture"
+      },
+      {
+        "image": "visual_metaphor",
+        "alt": "Open Source AI Agents: Visual metaphor showing a collaborative jigsaw puzzle representing community contribution, transparency, and inspectability.",
+        "title": "Open Source AI: Community Contribution"
+      },
+      {
+        "image": "use_case_illustration",
+        "alt": "[AI Agent Name] Use Case: [Specific Industry] application for [Specific Benefit], showing how the agent improves efficiency and outcomes.",
+        "title": "[AI Agent Name] in [Specific Industry]"
+      }
+    ],
+    "seo_guidelines": [
+      "File names should follow the format: ai-agent-[agent-name]-[keyword].jpg (e.g., ai-agent-autogen-collaboration.jpg)",
+      "Use dashes instead of spaces in file names.",
+      "Keep file names concise and descriptive.",
+      "Use aggressive compression techniques to reduce file size (target under 200KB, ideally 100KB).",
+      "Optimize images for web use (sRGB color space, progressive JPEGs).",
+      "Maintain consistent visual style (color palette, font choices) across all images.",
+      "Use captions consistently to provide context and improve accessibility."
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "agent": "OnPageSEOAgent",
+  "topic": "top 10 ai agents open source in 2025 ",
+  "timestamp": "2025-08-06T10:55:42.078406",
+  "output": {
+    "title_tag": "Top 10 Open Source AI Agents in 2025",
+    "meta_description": "Discover the best open source AI agents and frameworks for 2025. Explore our top 10 list for free, autonomous AI tools & platforms.",
+    "h1_tag": "Top 10 Open Source AI Agents to Watch in 2025",
+    "h2_tags": [
+      "What are Open Source AI Agents?",
+      "Why Use Open Source AI Agents?",
+      "Our Top 10 Open Source AI Agent Picks for 2025",
+      "Factors We Considered",
+      "AI Agent Frameworks and Platforms",
+      "Getting Started with Open Source AI Agents",
+      "The Future of Open Source AI Agents"
+    ],
+    "url_slug": "top-open-source-ai-agents-2025",
+    "canonical_url": "https://www.example.com/top-open-source-ai-agents-2025",
+    "open_graph": {
+      "og:title": "Top 10 Open Source AI Agents in 2025",
+      "og:description": "Explore the leading open source AI agents and frameworks for 2025. Build autonomous AI solutions with our curated list."
+    }
+  }
+}

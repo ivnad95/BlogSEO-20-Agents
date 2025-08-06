@@ -1,0 +1,106 @@
+# Pre-commit hooks configuration for BlogSEO v3
+# Ensures code quality and consistency before commits
+
+repos:
+  # Black - Python code formatter
+  - repo: https://github.com/psf/black
+    rev: 24.4.2
+    hooks:
+      - id: black
+        language_version: python3
+        args: [--line-length=100]
+        exclude: ^(venv/|cache/|output/)
+
+  # isort - Python import sorter
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        args: [--profile=black, --line-length=100]
+        exclude: ^(venv/|cache/|output/)
+
+  # Flake8 - Python linter
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+        args: [
+          --max-line-length=100,
+          --max-complexity=10,
+          --ignore=E203 W503 E501,  # E203: whitespace before ':' (conflicts with black)
+                                     # W503: line break before binary operator (conflicts with black)
+                                     # E501: line too long (handled by black)
+          --exclude=venv,__pycache__,.git,cache,output
+        ]
+        additional_dependencies: [
+          flake8-docstrings,
+          flake8-bugbear,
+          flake8-comprehensions,
+          flake8-simplify
+        ]
+
+  # Additional Python checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      # Syntax and format checks
+      - id: check-ast              # Check Python syntax
+      - id: check-builtin-literals # Require literal syntax for empty containers
+      - id: check-docstring-first  # Check docstring is first in module
+      - id: debug-statements       # Check for debugger imports and breakpoints
+      - id: fix-byte-order-marker  # Remove UTF-8 byte order marker
+      
+      # File checks
+      - id: check-yaml             # Check YAML syntax
+      - id: check-toml             # Check TOML syntax
+      - id: check-json             # Check JSON syntax
+      - id: check-merge-conflict   # Check for merge conflict strings
+      - id: check-added-large-files # Prevent large files from being committed
+        args: [--maxkb=1000]
+      
+      # General cleanup
+      - id: end-of-file-fixer      # Ensure files end with newline
+      - id: trailing-whitespace    # Remove trailing whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: mixed-line-ending      # Ensure consistent line endings
+        args: [--fix=lf]
+      
+      # Python specific
+      - id: name-tests-test        # Ensure test files are named correctly
+        args: [--django]
+      - id: requirements-txt-fixer # Sort requirements.txt
+
+  # Type checking with mypy (optional but recommended)
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.10.0
+    hooks:
+      - id: mypy
+        args: [--ignore-missing-imports, --no-strict-optional]
+        additional_dependencies: [types-requests]
+        exclude: ^(venv/|cache/|output/|tests/)
+
+  # Security checks with bandit
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.8
+    hooks:
+      - id: bandit
+        args: [-ll, --skip=B101]  # B101: assert_used
+        exclude: ^(tests/|venv/)
+
+  # Docstring coverage check
+  - repo: https://github.com/PyCQA/pydocstyle
+    rev: 6.3.0
+    hooks:
+      - id: pydocstyle
+        args: [--convention=google]
+        exclude: ^(venv/|cache/|output/|tests/|setup.py)
+
+# Configuration for pre-commit itself
+default_language_version:
+  python: python3
+
+# Files to exclude globally
+exclude: ^(venv/|\.git/|cache/|output/|\.vscode/|\.idea/)
+
+# Fail fast - stop running hooks after the first failure
+fail_fast: false

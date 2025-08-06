@@ -1,0 +1,168 @@
+{
+  "agent": "KeywordMiningAgent",
+  "topic": "top 10 ai agents open source in 2025 ",
+  "timestamp": "2025-08-06T10:54:05.187277",
+  "output": {
+    "google_suggestions": [],
+    "related_queries": [
+      "top",
+      "10",
+      "ai",
+      "agents",
+      "open"
+    ],
+    "primary_keywords": [
+      "AI agents open source 2025",
+      "top AI agents open source",
+      "best open source AI agents",
+      "open source autonomous agents",
+      "AI agent frameworks open source",
+      "top 10 AI agents",
+      "open source AI tools 2025",
+      "best AI agents 2025",
+      "free AI agents open source",
+      "AI agent platforms open source"
+    ],
+    "long_tail_keywords": [
+      "top 10 open source AI agents for automation in 2025",
+      "best open source AI agent frameworks for developers in 2025",
+      "list of free and open source AI agents for enterprise use in 2025",
+      "open source AI agents for data analysis and machine learning 2025",
+      "top 10 open source AI agents with Python integration in 2025",
+      "best open source AI agents for robotic process automation in 2025",
+      "free AI agents open source for research purposes in 2025",
+      "open source AI agent platforms with active community support in 2025",
+      "top 10 AI agents open source for personal use in 2025",
+      "best open source AI agents for small businesses in 2025",
+      "open source AI agents for customer service applications in 2025",
+      "AI agent frameworks open source for natural language processing 2025",
+      "top AI agents open source for game development in 2025",
+      "open source AI agents for financial modeling in 2025",
+      "best open source AI agents for cybersecurity in 2025"
+    ],
+    "semantic_keywords": [
+      "artificial intelligence",
+      "autonomous systems",
+      "machine learning",
+      "deep learning",
+      "neural networks",
+      "cognitive agents",
+      "intelligent automation",
+      "software agents",
+      "AI development",
+      "programming languages"
+    ],
+    "question_keywords": [
+      "What are the top 10 AI agents open source in 2025?",
+      "Which AI agents are open source?",
+      "What is the best open source AI agent framework?",
+      "How to use open source AI agents?",
+      "Where can I find open source AI agents?",
+      "Why use open source AI agents?",
+      "What are the benefits of open source AI agents?",
+      "What will be the best AI agents in 2025?",
+      "How to choose an open source AI agent?",
+      "What are the alternatives to closed source AI agents?"
+    ],
+    "commercial_keywords": [
+      "AI agent platform pricing",
+      "AI agent open source license",
+      "best AI agent subscription",
+      "AI agent commercial use",
+      "enterprise AI agent solutions"
+    ],
+    "informational_keywords": [
+      "AI agent open source tutorial",
+      "AI agent open source documentation",
+      "AI agent open source examples",
+      "AI agent open source comparison",
+      "AI agent open source roadmap 2025",
+      "AI agent open source community",
+      "AI agent open source features",
+      "AI agent open source benefits",
+      "AI agent open source use cases",
+      "AI agent open source future trends"
+    ],
+    "keyword_clusters": {
+      "Open Source AI Agents": [
+        "AI agents open source",
+        "open source autonomous agents",
+        "free AI agents open source",
+        "AI agent frameworks open source",
+        "open source AI tools"
+      ],
+      "Top AI Agents 2025": [
+        "top AI agents 2025",
+        "best AI agents 2025",
+        "top 10 AI agents",
+        "best AI agents for [specific use case] 2025"
+      ],
+      "AI Agent Functionality": [
+        "AI agents for automation",
+        "AI agents for data analysis",
+        "AI agents for machine learning",
+        "AI agents for natural language processing"
+      ]
+    },
+    "difficulty_analysis": {
+      "easy_wins": [
+        "AI agent open source tutorial",
+        "AI agent open source examples",
+        "open source AI agents for [niche use case]",
+        "free AI agents open source for research"
+      ],
+      "medium_competition": [
+        "top 10 AI agents open source 2025",
+        "best open source AI agents 2025",
+        "open source AI agent frameworks",
+        "AI agent platforms open source"
+      ],
+      "high_competition": [
+        "AI agents",
+        "artificial intelligence",
+        "machine learning"
+      ]
+    },
+    "search_intent_mapping": {
+      "AI agents open source 2025": "informational",
+      "top AI agents open source": "informational",
+      "best open source AI agents": "informational",
+      "open source autonomous agents": "informational",
+      "AI agent frameworks open source": "informational",
+      "top 10 AI agents": "informational",
+      "open source AI tools 2025": "informational",
+      "best AI agents 2025": "informational",
+      "free AI agents open source": "informational",
+      "AI agent platforms open source": "informational",
+      "AI agent platform pricing": "commercial",
+      "AI agent open source license": "commercial"
+    },
+    "content_suggestions": [
+      "A comprehensive list of the top 10 open-source AI agents to watch in 2025.",
+      "A detailed comparison of open-source AI agent frameworks, highlighting their strengths and weaknesses.",
+      "A tutorial on how to build and deploy an AI agent using open-source tools.",
+      "A guide to the licensing considerations for using open-source AI agents in commercial applications.",
+      "An analysis of the future trends in open-source AI agent development."
+    ],
+    "featured_snippet_opportunities": [
+      "What are the key features of the top open source AI agents?",
+      "How do open source AI agents compare to proprietary solutions?",
+      "What are the best use cases for open source AI agents?",
+      "What programming languages are commonly used to develop open source AI agents?",
+      "What are the licensing terms for popular open source AI agent frameworks?"
+    ],
+    "voice_search_keywords": [
+      "What are the best open source AI agents for me?",
+      "Find the top 10 AI agents that are open source.",
+      "Which AI agents are completely free and open source?",
+      "Tell me about open source AI agent frameworks.",
+      "What AI agents will be popular in 2025 that are open source?"
+    ],
+    "total_keywords_found": 80,
+    "keyword_density_recommendations": {
+      "primary": "2-3%",
+      "secondary": "1-2%",
+      "semantic": "0.5-1%"
+    }
+  }
+}
