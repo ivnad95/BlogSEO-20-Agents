@@ -1,18 +1,25 @@
 # Core Dependencies
-streamlit==1.46.1
-pytrends==4.9.2
-requests==2.31.0
 beautifulsoup4==4.13.4
-pillow==11.2.1
-google-generativeai==0.3.2
-python-dotenv==1.0.0
-tqdm==4.67.1
-pydantic==2.7.4
-openai==0.28.1
+bertopic==0.16.2
+duckduckgo-search==6.1.6
 feedparser==6.0.10
-pandas==2.1.4
+google-generativeai==0.3.2
+keybert==0.8.4
 langchain==0.1.0
 langchain-google-genai==0.0.6
+language-tool-python
+openai==0.28.1
+pandas==2.1.4
+pillow==11.2.1
+pydantic==2.7.4
+python-dotenv==1.0.0
+pytrends==4.9.2
+requests==2.31.0
+sentence-transformers==3.0.1
+simhash
+streamlit==1.46.1
+tqdm==4.67.1
+yake==0.4.8
 
 # Development Dependencies (optional)
 # Uncomment the following lines for development setup:

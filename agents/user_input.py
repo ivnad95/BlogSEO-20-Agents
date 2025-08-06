@@ -1,33 +1,38 @@
-class UserInputAgent:
-    """Gathers and validates user input for content creation parameters."""
-    
+from .base_agent import BaseAgent
+
+class UserInputAgent(BaseAgent):
+    """
+    Initializes the content brief with the user's topic and default parameters.
+    This is the first agent in the workflow.
+    """
+
     def run(self, state: dict) -> dict:
-        """Process user input and return REAL validated parameters.
-        
+        """
+        Takes the initial state with a 'topic' and creates the initial content brief.
+
         Args:
-            state: Shared state dictionary
-            
+            state: The initial state, must contain a 'topic' key.
+
         Returns:
-            Dictionary with actual user parameters
+            A dictionary representing the initial content brief.
         """
         topic = state.get('topic', '')
-        previous = state.get('previous_output', {})
-        
-        # Extract trends from previous agent
-        trending_topics = previous.get('trending_now', [])
-        related_queries = previous.get('related_queries', {})
-        
-        # Return REAL user configuration
-        return {
-            "topic_confirmed": topic,
+        if not topic:
+            return {"error": "Topic is required to start the process."}
+
+        # This agent sets up the initial parameters for the entire workflow.
+        # These can be overridden by the user in a more advanced UI.
+        initial_brief = {
+            "topic": topic,
             "target_word_count": 2000,
             "tone": "professional",
-            "target_audience": "general audience interested in " + topic,
+            "target_audience": f"a general audience interested in {topic}",
             "content_type": "informational blog post",
             "seo_focus": True,
             "include_images": True,
-            "trending_topics_to_include": trending_topics[:3] if trending_topics else [],
-            "related_queries_to_address": list(related_queries.keys())[:5] if related_queries else [],
-            "call_to_action": "Subscribe for more content",
+            "call_to_action": "Subscribe for more great content!",
             "brand_voice": "informative and engaging"
         }
+
+        # The state will be built upon this initial brief.
+        return initial_brief

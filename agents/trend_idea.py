@@ -8,6 +8,8 @@ import json
 
 class TrendIdeaAgent(BaseAgent):
     """PROFESSIONAL trend analysis agent using Gemini AI + real data sources."""
+    # This agent performs a mix of data gathering and analysis, a flash model is suitable.
+    model_name: str = "gemini-1.5-flash-latest"
     
     def run(self, state: dict) -> dict:
         """Analyze trends and generate content ideas using FREE APIs.

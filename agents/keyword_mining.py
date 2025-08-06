@@ -1,145 +1,99 @@
 from .base_agent import BaseAgent
-import requests
-from collections import Counter
+from utilities.text_analysis import extract_keywords_yake, extract_keywords_keybert, model_topics_bertopic
 import json
 
 class KeywordMiningAgent(BaseAgent):
-    """PROFESSIONAL keyword research agent using Gemini AI for advanced SEO."""
-    
+    # This agent performs heavy analysis and synthesis, requiring a more powerful model.
+    model_name: str = "gemini-1.5-pro-latest"
+
+    """
+    PROFESSIONAL keyword and topic analysis agent. It uses text analysis models on
+    competitor content and synthesizes the findings with Gemini AI for advanced SEO insights.
+    This agent covers the roles of both Keyword Extraction (A5) and Topical Authority Modeler (A6).
+    """
+
     def run(self, state: dict) -> dict:
-        """Mine and analyze keywords using Gemini AI and free tools.
-        
-        Args:
-            state: Shared state dictionary
-            
-        Returns:
-            Comprehensive keyword analysis
         """
-        topic = state.get('topic', '')
-        all_outputs = state.get('all_outputs', {})
-        trends_data = all_outputs.get('TrendIdeaAgent', {})
+        Mines keywords and models topics from competitor text, then uses an LLM for strategic analysis.
+
+        Args:
+            state: Shared state dictionary. Must contain the output from CompetitorScanAgent,
+                   expected under a key like 'competitor_analysis'.
+
+        Returns:
+            A dictionary with a comprehensive keyword and topic analysis.
+        """
+        # This agent relies on the output of the competitor scan.
+        # The orchestrator should place the output of the competitor scan into the state.
+        # We'll look for a key like 'competitor_content' within the state.
+        competitor_content = state.get('competitor_content', [])
         
-        # Get related queries from trends
-        related_queries = trends_data.get('related_queries', {})
+        if not competitor_content:
+             # Fallback for testing or if the key name is different
+            if state.get('competitor_analysis', {}).get('competitor_content'):
+                competitor_content = state['competitor_analysis']['competitor_content']
+            else:
+                return {"error": "Competitor content from a previous step is required for keyword mining."}
+
+        # 1. Consolidate text and run local text analysis
+        full_text_corpus = " ".join([item.get('content_summary', '') for item in competitor_content])
+        document_list = [item.get('content_summary', '') for item in competitor_content if item.get('content_summary')]
+
+        if not full_text_corpus.strip():
+            return {"error": "Competitor content is empty or invalid."}
+
+        # Extract keywords using multiple methods for diversity
+        keywords_yake = extract_keywords_yake(full_text_corpus, max_keywords=30)
+        keywords_keybert = extract_keywords_keybert(full_text_corpus, top_n=20)
         
-        # Extract keywords from various sources
-        keywords = []
-        
-        # 1. Google Suggest API (FREE)
+        # Model topics from the documents
         try:
-            suggest_url = f"http://suggestqueries.google.com/complete/search?output=firefox&q={topic}"
-            response = requests.get(suggest_url)
-            if response.status_code == 200:
-                suggestions = response.json()[1]
-                keywords.extend(suggestions)
-        except:
-            pass
-        
-        # FUTURE WORK - SPRINT 2:
-        # ========================
-        # 1. PyTrends Keyword Research:
-        #    - pytrends.build_payload(keywords) for search volume data
-        #    - Get related queries and rising queries
-        #    - Analyze keyword seasonality and geographic distribution
-        #    - Compare keyword trends over time
-        
-        # 2. Google Keyword Planner API:
-        #    - Fetch keyword ideas with search volumes
-        #    - Get CPC and competition data
-        #    - Identify long-tail keyword opportunities
-        #    - Keyword grouping and clustering
-        
-        # 3. LLM-Based Keyword Expansion:
-        #    - Prompt: "Given the seed keyword '{keyword}', generate 30 related 
-        #      long-tail keywords categorized by search intent (informational, 
-        #      navigational, transactional, commercial)."
-        #    - Use semantic similarity for keyword relevance scoring
-        
-        # 4. SERP Analysis:
-        #    - BeautifulSoup scraping of Google SERP features
-        #    - Extract People Also Ask (PAA) questions
-        #    - Identify featured snippet opportunities
-        #    - Analyze SERP intent signals
-        
-        # 5. Competitor Keyword Mining:
-        #    - Scrape competitor meta tags and content
-        #    - Extract frequently used terms and phrases
-        #    - Identify keyword gaps and opportunities
-        
-        # 6. NLP-Based Keyword Extraction:
-        #    - Use spaCy/NLTK for entity recognition
-        #    - TF-IDF analysis for important terms
-        #    - RAKE algorithm for multi-word keyword extraction
-        #    - TextRank for keyword importance scoring
-        
-        # 7. Search Intent Classification:
-        #    - ML model to classify keyword intent
-        #    - Match keywords to content types
-        #    - Prioritize keywords by business value
-        
-        # 8. Keyword Difficulty Scoring:
-        #    - Analyze top 10 SERP results
-        #    - Calculate domain authority requirements
-        #    - Estimate content depth needed
-        
-        # 2. Use Gemini AI for advanced keyword research
+            # Check if there are enough documents for BERTopic
+            if len(document_list) > 1:
+                topic_info, topic_keywords_raw = model_topics_bertopic(document_list)
+                # Convert BERTopic output to a more JSON-friendly format
+                topic_clusters = {f"Topic {topic_id}": [word for word, score in words] for topic_id, words in topic_keywords_raw.items() if topic_id != -1}
+            else:
+                topic_clusters = {"info": "Not enough documents to perform topic modeling."}
+        except Exception as e:
+            topic_clusters = {"error": f"Failed to model topics: {e}"}
+
+        # 2. Synthesize with LLM
         if not self.llm:
             return {'error': 'Gemini API key not configured'}
+
+        system_prompt = """You are a world-class SEO strategist and data analyst. Your job is to take raw data from text analysis tools and transform it into a strategic keyword and topical authority plan. You must distinguish between what the tools found and the strategy you are creating."""
+
+        user_prompt = f"""
+        I have analyzed the content of top competitors for a topic. Here is the raw data I extracted:
+
+        --- RAW DATA ---
+        Keywords extracted by YAKE (a statistical extractor): {json.dumps(keywords_yake, indent=2)}
+        Keywords extracted by KeyBERT (a transformer-based extractor): {json.dumps(keywords_keybert, indent=2)}
+        Topic clusters identified by BERTopic: {json.dumps(topic_clusters, indent=2)}
+        --- END RAW DATA ---
+
+        Based on this data, create a comprehensive SEO strategy in JSON format. The strategy should include:
         
-        system_prompt = """You are an expert SEO keyword researcher with deep knowledge of search intent, keyword difficulty, and content optimization.
-        You understand user search behavior, long-tail keywords, and semantic SEO."""
-        
-        user_prompt = f"""Perform comprehensive keyword research for the topic: '{topic}'
-        
-        RELATED QUERIES FOUND: {list(related_queries.keys())[:10]}
-        GOOGLE SUGGESTIONS: {keywords[:10]}
-        
-        Provide detailed keyword analysis in JSON format:
-        {{
-            "primary_keywords": ["List 10 main keywords with highest value"],
-            "long_tail_keywords": ["List 15 specific long-tail variations"],
-            "semantic_keywords": ["List 10 LSI/semantic keywords"],
-            "question_keywords": ["List 10 question-based keywords"],
-            "commercial_keywords": ["List 5 buyer-intent keywords"],
-            "informational_keywords": ["List 10 research-intent keywords"],
-            "keyword_clusters": {{
-                "cluster_name": ["related keywords in cluster"]
-            }},
-            "difficulty_analysis": {{
-                "easy_wins": ["Low competition keywords"],
-                "medium_competition": ["Moderate difficulty keywords"],
-                "high_competition": ["Difficult but valuable keywords"]
-            }},
-            "search_intent_mapping": {{
-                "keyword": "intent_type (informational/commercial/navigational/transactional)"
-            }},
-            "content_suggestions": ["5 content ideas based on keywords"],
-            "featured_snippet_opportunities": ["Keywords likely to win snippets"],
-            "voice_search_keywords": ["Natural language variations"]
-        }}
+        - "primary_keywords": Identify the top 5-7 most important primary keywords from the raw data.
+        - "long_tail_keywords": Generate 10-15 specific, long-tail variations inspired by the raw keywords and topics.
+        - "semantic_keywords": List 10 LSI/semantic keywords that are conceptually related to the topic clusters.
+        - "question_keywords": Formulate 10 question-based keywords that the content should answer, based on the identified topics.
+        - "keyword_clusters": Refine the raw topic clusters into a logical structure. Group related keywords under 3-5 clear, human-readable cluster names (e.g., "Understanding the Basics", "Advanced Techniques", "Product Comparisons").
+        - "topical_authority_plan": Provide a brief 2-3 sentence plan on how to build topical authority, referencing the identified clusters. Explain which topics seem most important based on the data.
+        - "search_intent_mapping": For the primary keywords, map each one to a likely search intent (e.g., "Informational", "Commercial").
         """
-        
+
         response = self.execute_prompt(system_prompt, user_prompt)
         keyword_analysis = self.parse_json_response(response)
-        
-        # Combine all results
-        result = {
-            'google_suggestions': keywords,
-            'related_queries': list(related_queries.keys())[:20],
-            **keyword_analysis
-        }
-        
-        # Calculate total unique keywords found
-        all_keywords = set()
-        for key, value in result.items():
-            if isinstance(value, list):
-                all_keywords.update(value)
-        
-        result['total_keywords_found'] = len(all_keywords)
-        result['keyword_density_recommendations'] = {
-            'primary': '2-3%',
-            'secondary': '1-2%',
-            'semantic': '0.5-1%'
-        }
-        
-        return result
+
+        # Combine raw data with LLM analysis for a full report
+        state.update({
+            "keyword_strategy": keyword_analysis,
+            "raw_keyword_data": {
+                "yake_keywords": keywords_yake,
+                "keybert_keywords": keywords_keybert,
+                "bertopic_clusters": topic_clusters
+            }
+        })
+        return state
