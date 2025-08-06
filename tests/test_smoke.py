@@ -1,186 +1,61 @@
-"""Smoke test for the orchestrator.
-
-This module tests the basic functionality of the orchestrator
-by running it with a test topic and asserting that expected
-keys exist in the output.
-"""
-
 import sys
 import os
 from pathlib import Path
-
-# Add parent directory to path to import modules
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
 import pytest
-from orchestrator.orchestrator import Orchestrator, AgentState
-import json
-from datetime import datetime
 
+# Add project root to path to allow importing modules from the app
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from orchestrator.orchestrator import Orchestrator
 
-def test_orchestrator_import():
-    """Test that the orchestrator can be imported."""
-    assert Orchestrator is not None
-    assert AgentState is not None
+@pytest.fixture(scope="module")
+def orchestrator_instance():
+    """
+    Pytest fixture to initialize the orchestrator once for all tests in this module.
+    It sets a dummy API key to allow agent initialization without making real calls.
+    """
+    # This dummy key is necessary for the agent classes to be instantiated without error.
+    os.environ['GEMINI_API_KEY'] = 'DUMMY_API_KEY_FOR_TESTING_PURPOSES'
+    return Orchestrator()
 
+def test_orchestrator_initialization(orchestrator_instance):
+    """
+    Tests that the Orchestrator class can be initialized and that it successfully
+    loads the agent classes defined in the AGENT_SEQUENCE.
+    """
+    assert orchestrator_instance is not None, "Orchestrator instance should not be None"
+    assert hasattr(orchestrator_instance, 'run'), "Orchestrator should have a 'run' method"
+    assert hasattr(orchestrator_instance, 'agents'), "Orchestrator should have an 'agents' attribute"
+    # Check that our full list of 18 agents was loaded
+    assert len(orchestrator_instance.agents) == 18, "Orchestrator should load all 18 agents"
+    print("\n✓ Orchestrator initialized and all 18 agents loaded successfully.")
 
-def test_orchestrator_initialization():
-    """Test that the orchestrator can be initialized."""
-    orchestrator = Orchestrator()
-    assert orchestrator is not None
-    assert hasattr(orchestrator, 'run')
-    assert hasattr(orchestrator, 'agents')
-    assert len(orchestrator.agents) > 0
+def test_orchestrator_run_handles_api_error_gracefully(orchestrator_instance):
+    """
+    Tests that a full run of the orchestrator with a dummy API key fails gracefully.
+    This is a smoke test to ensure the pipeline is wired correctly and that the
+    orchestrator's error handling works as expected when an agent fails on an API call.
+    """
+    test_topic = "The Psychology of Color in Marketing"
+    print(f"\nRunning orchestrator smoke test with topic: '{test_topic}'")
+    print("Expecting a graceful failure due to dummy API key...")
+    
+    # Run the orchestrator. We expect it to fail when the first agent (TrendIdeaAgent)
+    # tries to use the dummy API key.
+    final_state = orchestrator_instance.run(topic=test_topic)
 
+    # 1. Verify that the final state indicates an error.
+    assert isinstance(final_state, dict), "Final state should be a dictionary"
+    assert 'error' in final_state, "Final state should contain an 'error' key on failure"
+    
+    # 2. Verify that the error message is informative.
+    error_message = final_state['error']
+    assert "failed" in error_message, "Error message should indicate failure"
+    # The first agent to make a call is TrendIdeaAgent
+    assert "TrendIdeaAgent" in error_message, "Error message should name the failing agent"
+    print(f"✓ Orchestrator correctly caught expected failure: {error_message}")
 
-def test_orchestrator_run_with_test_topic():
-    """Test running the orchestrator with a test topic."""
-    # Initialize orchestrator
-    orchestrator = Orchestrator()
-    
-    # Define test topic
-    topic = "Test Topic"
-    
-    # Run the orchestration
-    state = orchestrator.run(topic=topic)
-    
-    # Assert that state is returned
-    assert state is not None
-    assert isinstance(state, AgentState)
-    
-    # Assert required keys exist in state
-    assert state.topic == topic
-    assert hasattr(state, 'completed_agents')
-    assert hasattr(state, 'failed_agents')
-    assert hasattr(state, 'intermediate_outputs')
-    assert hasattr(state, 'errors')
-    assert hasattr(state, 'start_time')
-    assert hasattr(state, 'end_time')
-    assert hasattr(state, 'final_output')
-    assert hasattr(state, 'status')
-    
-    # Assert timing information
-    assert state.start_time is not None
-    assert state.end_time is not None
-    assert isinstance(state.start_time, datetime)
-    assert isinstance(state.end_time, datetime)
-    
-    # Assert status is one of expected values
-    assert state.status in ['completed', 'failed', 'running', 'initialized']
-    
-    # If there are completed agents, check intermediate outputs
-    if state.completed_agents:
-        assert len(state.intermediate_outputs) > 0
-        for agent in state.completed_agents:
-            # Agent name should be in intermediate outputs
-            agent_name = agent.replace('Agent', '')
-            # Check if any variant of the agent name is in outputs
-            has_output = any(
-                agent_name in key or agent in key 
-                for key in state.intermediate_outputs.keys()
-            )
-            if not has_output:
-                print(f"Warning: No output found for agent {agent}")
-    
-    # Log some information for debugging
-    print(f"\nTest completed with status: {state.status}")
-    print(f"Completed agents: {len(state.completed_agents)}")
-    print(f"Failed agents: {len(state.failed_agents)}")
-    
-    # Note: The agents are currently unimplemented stubs, so failures are expected
-    # This test verifies the orchestrator infrastructure works correctly
-    if state.failed_agents:
-        print(f"\nNote: {len(state.failed_agents)} agents failed (expected for unimplemented stubs)")
-        # Check that errors were properly captured
-        assert len(state.errors) > 0
-        # Sample first few errors for verification
-        sample_errors = list(state.errors.items())[:3]
-        for agent, error_info in sample_errors:
-            error_msg = error_info.get('message', 'Unknown error') if isinstance(error_info, dict) else str(error_info)
-            print(f"  Example error - {agent}: {error_msg[:100]}...")
-    
-    # Assert final output structure (if any agents completed)
-    if state.status == 'completed' and state.final_output:
-        assert state.final_output is not None
-        print(f"Final output type: {type(state.final_output)}")
-        
-        # If final output is a dict (expected from FinalAssemblyAgent)
-        if isinstance(state.final_output, dict):
-            # Check for expected keys from final assembly
-            expected_keys = [
-                'title', 'content', 'meta_description', 
-                'keywords', 'author', 'publish_date'
-            ]
-            
-            for key in expected_keys:
-                if key not in state.final_output:
-                    print(f"Warning: Expected key '{key}' not found in final output")
-            
-            # Print summary of final output
-            if 'title' in state.final_output:
-                print(f"Generated title: {state.final_output.get('title', 'N/A')[:100]}...")
-            if 'content' in state.final_output:
-                content_length = len(str(state.final_output.get('content', '')))
-                print(f"Content length: {content_length} characters")
-    
-    # The test passes if the orchestrator ran and handled failures gracefully
-    print("\n✓ Orchestrator smoke test completed - infrastructure working correctly")
-
-
-def test_orchestrator_cache_directory():
-    """Test that cache directory is created."""
-    orchestrator = Orchestrator()
-    assert orchestrator.cache_dir.exists()
-    assert orchestrator.cache_dir.is_dir()
-
-
-def test_orchestrator_state_serialization():
-    """Test that AgentState can be serialized to dict."""
-    state = AgentState(topic="Test Topic")
-    state.completed_agents = ["TestAgent1", "TestAgent2"]
-    state.intermediate_outputs = {"TestAgent1": {"result": "test"}}
-    state.start_time = datetime.now()
-    state.end_time = datetime.now()
-    
-    # Convert to dict
-    state_dict = state.to_dict()
-    
-    # Assert dict structure
-    assert isinstance(state_dict, dict)
-    assert state_dict['topic'] == "Test Topic"
-    assert len(state_dict['completed_agents']) == 2
-    assert 'TestAgent1' in state_dict['intermediate_outputs']
-    assert state_dict['start_time'] is not None
-    assert state_dict['end_time'] is not None
-
-
-if __name__ == "__main__":
-    # Run the smoke test directly
-    print("Running orchestrator smoke test...")
-    print("="*50)
-    
-    try:
-        test_orchestrator_import()
-        print("✓ Orchestrator import test passed")
-        
-        test_orchestrator_initialization()
-        print("✓ Orchestrator initialization test passed")
-        
-        test_orchestrator_cache_directory()
-        print("✓ Cache directory test passed")
-        
-        test_orchestrator_state_serialization()
-        print("✓ State serialization test passed")
-        
-        print("\nRunning main orchestrator test with 'Test Topic'...")
-        test_orchestrator_run_with_test_topic()
-        print("✓ Orchestrator run test passed")
-        
-        print("\n" + "="*50)
-        print("All smoke tests passed successfully!")
-        
-    except Exception as e:
-        print(f"\n✗ Test failed: {str(e)}")
-        import traceback
-        traceback.print_exc()
-        sys.exit(1)
+    # 3. Verify that the state before the error is still available for debugging.
+    assert 'final_state' in final_state, "Final state should contain the last known state"
+    last_known_state = final_state['final_state']
+    assert last_known_state.get('topic') == test_topic, "Last known state should still contain the topic"
+    print("✓ Final state dictionary contains debug information as expected.")

@@ -2,83 +2,80 @@ from .base_agent import BaseAgent
 import json
 
 class DraftWriterAgent(BaseAgent):
-    """PROFESSIONAL content writer using Gemini AI for high-quality blog generation."""
-    
+    # Writing the main draft is a critical task requiring the best model.
+    model_name: str = "gemini-1.5-pro-latest"
+
+    """
+    PROFESSIONAL content writer that takes a strategic outline and generates a
+    full-length, high-quality blog post, section by section.
+    This corresponds to agent A8.
+    """
+
     def run(self, state: dict) -> dict:
-        """Generate PROFESSIONAL blog content using Gemini AI."""
-        topic = state.get('topic', '')
-        all_outputs = state.get('all_outputs', {})
-        
-        # Extract context from previous agents
-        trends_data = all_outputs.get('TrendIdeaAgent', {})
-        user_data = all_outputs.get('UserInputAgent', {})
-        keywords_data = all_outputs.get('KeywordMiningAgent', {})
-        
-        # Get data
-        ai_trends = trends_data.get('ai_trend_analysis', {})
-        target_keywords = keywords_data.get('primary_keywords', [])
-        content_opportunities = ai_trends.get('content_opportunities', [])
-        
+        """
+        Generates a full article draft by executing the plan from the outline.
+
+        Args:
+            state: Shared state dictionary, must contain 'outline' and 'topic'.
+
+        Returns:
+            A dictionary containing the full article draft.
+        """
         if not self.llm:
             return {'error': 'Gemini API key not configured'}
+
+        outline = state.get('outline')
+        topic = state.get('topic', 'the specified topic')
+        tone = state.get('tone', 'professional') # Get tone from initial state
+
+        if not outline or not isinstance(outline, list):
+            return {'error': 'A valid outline from the OutlineGeneratorAgent is required.'}
+
+        full_draft_sections = []
         
-        result = {'sections': []}
-        
-        # Generate comprehensive blog post using Gemini
-        system_prompt = """You are an expert SEO content writer who creates engaging, informative, and highly optimized blog posts.
-        You write with authority, use data and examples, and create content that ranks well on Google.
-        Your writing is clear, engaging, and provides real value to readers."""
-        
-        user_prompt = f"""Write a comprehensive, SEO-optimized blog post about '{topic}'.
-        
-        TARGET KEYWORDS TO INCLUDE NATURALLY: {target_keywords[:10]}
-        CONTENT OPPORTUNITIES: {content_opportunities[:3]}
-        TRENDING ANGLES: {ai_trends.get('trending_angles', [])[:3]}
-        
-        Create a detailed blog post with the following structure in JSON format:
-        {{
-            "title": "SEO-optimized title with main keyword",
-            "meta_description": "155-character meta description",
-            "introduction": "Engaging 200-word introduction with hook",
-            "main_sections": [
-                {{
-                    "heading": "Section heading with keyword",
-                    "content": "300-400 words of detailed content",
-                    "key_points": ["point1", "point2"],
-                    "examples": ["example1", "example2"]
-                }}
-            ],
-            "conclusion": "150-word conclusion with CTA",
-            "faq_section": [
-                {{
-                    "question": "Common question",
-                    "answer": "Detailed answer"
-                }}
-            ],
-            "internal_links_suggestions": ["topic1", "topic2"],
-            "external_links_suggestions": ["authoritative source1", "source2"]
-        }}
-        
-        Make it comprehensive, informative, and at least 2000 words total.
-        Include statistics, examples, and actionable advice.
-        """
-        
-        response = self.execute_prompt(system_prompt, user_prompt)
-        draft_data = self.parse_json_response(response)
-        
-        # Calculate word count
-        total_text = str(draft_data)
-        result['word_count'] = len(total_text.split())
-        result['draft'] = draft_data
-        
-        # Generate additional sections if needed
-        if result['word_count'] < 1500:
-            additional_prompt = f"""Expand on the topic '{topic}' with 3 more detailed sections.
-            Focus on: practical tips, case studies, and common mistakes to avoid.
-            Format as JSON with 'additional_sections' array."""
+        system_prompt = f"""You are an expert blog and content writer specializing in SEO. Your writing style is engaging, clear, and authoritative. You write in a {tone} tone. Your task is to write a single, specific section of a blog post based on a detailed instruction set. Do NOT write the entire blog post. Only write the content for the section you are asked to write. Do not add any introductory or concluding phrases unless the instructions for the section explicitly ask for them."""
+
+        # Iterate through each section of the outline and generate content
+        for i, section in enumerate(outline):
+            section_title = section.get('title', f'Section {i+1}')
+            subsections = section.get('subsections', [])
+            keywords = section.get('keywords_to_include', [])
+
+            # Create a specific prompt for this section
+            user_prompt = f"""
+            Write the full content for the following section of a blog post about "{topic}".
+
+            **Section Title:** {section_title}
+
+            **Instructions & Key Points to Cover:**
+            {json.dumps(subsections, indent=2)}
+
+            **Keywords to Naturally Integrate:**
+            {json.dumps(keywords, indent=2)}
+
+            ---
+            Write ONLY the content for this section. Start directly with the text. Do not repeat the title or instructions. The content should be detailed, comprehensive, and engaging.
+            """
+
+            # Generate the content for this section
+            section_content = self.execute_prompt(system_prompt, user_prompt)
             
-            additional_response = self.execute_prompt(system_prompt, additional_prompt)
-            additional_data = self.parse_json_response(additional_response)
-            result['additional_sections'] = additional_data.get('additional_sections', [])
+            full_draft_sections.append({
+                "title": section_title,
+                "content": section_content
+            })
         
-        return result
+        # Assemble the final draft
+        # A simple title for now, can be refined by a later agent
+        draft_title = state.get('topic').title()
+        full_text = f"# {draft_title}\n\n"
+        full_text += "\n\n".join([f"## {s['title']}\n{s['content']}" for s in full_draft_sections])
+
+        final_draft = {
+            "title": draft_title,
+            "sections": full_draft_sections,
+            "full_text": full_text
+        }
+
+        state['draft'] = final_draft
+        return state

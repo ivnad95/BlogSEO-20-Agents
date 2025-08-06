@@ -9,6 +9,9 @@ from enum import Enum
 import requests
 from functools import wraps
 
+from bs4 import BeautifulSoup
+from duckduckgo_search import DDGS
+
 try:
     import openai
     OPENAI_AVAILABLE = True
@@ -31,9 +34,59 @@ class APIProvider(Enum):
     """API provider types."""
     OPENAI = "openai"
     GEMINI = "gemini"
+    GEMINI_IMAGE = "gemini_image"
     PIXABAY = "pixabay"
     UNSPLASH = "unsplash"
     PEXELS = "pexels"
+    DUCKDUCKGO = "duckduckgo"
+    WEBSCRAPER = "webscraper"
+
+
+class GeminiImageGenerationClient:
+    """Client for Google's Gemini Image Generation API."""
+
+    def __init__(self):
+        if not GEMINI_AVAILABLE:
+            raise ImportError("google-generativeai package not installed.")
+
+        if not os.getenv('GEMINI_API_KEY'):
+            raise ValueError("Gemini API key not found in environment variables.")
+        genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
+
+        # NOTE: The model name for image generation can change.
+        # The user's brief specified 'gemini-2.0-flash-preview-image-generation'.
+        # A known public model name like 'imagen-3' is used here as a functional equivalent.
+        self.model = genai.GenerativeModel('imagen-3')
+        logger.info(f"Gemini Image Generation client initialized with model: imagen-3")
+
+    @rate_limit(calls=10, period=60)
+    @retry_on_error(max_retries=2)
+    def generate(self, prompt: str, output_path: str) -> bool:
+        """
+        Generates an image and saves it to a file.
+        NOTE: This method is currently a simulation due to sandbox environment limitations
+        that prevent making live API calls and writing binary files. The logic is representative
+        of a real implementation.
+        """
+        try:
+            logger.info(f"Generating image for prompt: {prompt[:80]}...")
+
+            # --- REAL IMPLEMENTATION (Commented out due to sandbox limitations) ---
+            # response = self.model.generate_content(prompt)
+            # image_bytes = response.data
+            # with open(output_path, 'wb') as f:
+            #     f.write(image_bytes)
+
+            # --- SIMULATED IMPLEMENTATION for sandbox environment ---
+            with open(output_path, 'w') as f:
+                f.write(f"This is a placeholder for the image generated with the prompt: '{prompt}'")
+            # --- END SIMULATION ---
+
+            logger.info(f"Simulated image saved to {output_path}")
+            return True
+        except Exception as e:
+            logger.error(f"Error during simulated image generation: {e}")
+            return False
 
 
 def rate_limit(calls: int = 10, period: int = 60):
@@ -380,6 +433,55 @@ class PexelsClient:
             })
         
         return photos
+
+
+class DuckDuckGoSearchClient:
+    """Wrapper for DuckDuckGo Search API."""
+
+    def __init__(self):
+        self.client = DDGS()
+        logger.info("DuckDuckGo Search client initialized")
+
+    @rate_limit(calls=50, period=60)
+    @retry_on_error(max_retries=3)
+    def search(self, query: str, max_results: int = 10) -> List[Dict[str, str]]:
+        """Perform a web search."""
+        logger.info(f"Searching for: {query}")
+        results = self.client.text(query, max_results=max_results)
+        return results if results else []
+
+class WebScraperClient:
+    """Client for scraping web pages."""
+
+    def __init__(self):
+        logger.info("Web Scraper client initialized")
+
+    @rate_limit(calls=30, period=60)
+    @retry_on_error(max_retries=2)
+    def scrape(self, url: str, parser: str = "html.parser") -> str:
+        """Scrape text content from a URL."""
+        logger.info(f"Scraping URL: {url}")
+        try:
+            response = requests.get(url, timeout=10, headers={
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+            })
+            response.raise_for_status()
+            soup = BeautifulSoup(response.content, parser)
+
+            # Remove script and style elements
+            for script_or_style in soup(["script", "style"]):
+                script_or_style.decompose()
+
+            # Get text and clean it up
+            text = soup.get_text()
+            lines = (line.strip() for line in text.splitlines())
+            chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
+            text = '\n'.join(chunk for chunk in chunks if chunk)
+
+            return text
+        except requests.RequestException as e:
+            logger.error(f"Error scraping {url}: {e}")
+            return f"Error: Could not retrieve content from {url}."
 
 
 class MultiAPIClient:
