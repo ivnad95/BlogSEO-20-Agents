@@ -64,7 +64,7 @@ def load_language_tool():
 |A14|Fact-Checking Agent|`gemini-2.5-flash`|Show verification report|
 |A15|Image Prompt Engineer|`gemini-2.5-flash`|Log "Image prompts generated"|
 |A16|Image & Alt Text Agent|`gemini-2.0-flash-preview-image-generation` + `gemini-2.0-flash-lite`|Display images and alt text|
-|A17|Linking Strategist|`gemini-2.5-flash`|Log link strategy|
+|A17|Linking Strategist|`gemini-2.5-flash`|Log "link strategy"|
 |A18|Schema & HTML Assembler|`gemini-2.0-flash-lite`|Log "HTML assembled"|
 |A19|Originality & QA Agent|`gemini-2.5-flash`|Show QA metrics|
 |A20|Final Package Agent|N/A|Render final article and download button|
