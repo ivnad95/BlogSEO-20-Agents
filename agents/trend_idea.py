@@ -137,30 +137,38 @@ class TrendIdeaAgent(BaseAgent):
             pass
         
         # 5. Use Gemini AI to analyze and synthesize all trend data
-        if self.llm:
-            system_prompt = """You are an expert trend analyst and content strategist specializing in identifying viral topics and content opportunities.
-            Your role is to analyze real-time trend data and provide actionable insights for content creation."""
-            
-            user_prompt = f"""Analyze the following trend data for the topic '{topic}' and provide strategic insights:
-            
-            TRENDING NOW: {results.get('trending_now', [][:5])}
-            RELATED QUERIES: {json.dumps(results.get('related_queries', {}), indent=2)[:1000]}
-            RECENT NEWS: {[n['title'] for n in results.get('recent_news', [])]}
-            REDDIT DISCUSSIONS: {[r['title'] for r in results.get('reddit_discussions', [])]}
-            
-            Provide a comprehensive analysis in JSON format with:
-            1. content_opportunities: List of 5 specific content ideas based on trends
-            2. trending_angles: 5 unique angles to approach this topic
-            3. viral_potential: Score 1-10 with explanation
-            4. best_timing: When to publish for maximum impact
-            5. target_keywords: 10 high-value keywords to target
-            6. content_gaps: What competitors are missing
-            7. recommended_format: Best content format (listicle, guide, etc.)
-            """
-            
-            gemini_response = self.execute_prompt(system_prompt, user_prompt)
-            ai_analysis = self.parse_json_response(gemini_response)
-            results['ai_trend_analysis'] = ai_analysis
-        
-        # Return comprehensive REAL analyzed data
+        if not self.llm:
+            return {"error": "Gemini API key not configured"}
+
+        system_prompt = (
+            "You are an expert trend analyst and content strategist specializing in identifying "
+            "viral topics and content opportunities. Your role is to analyze real-time trend data "
+            "and provide actionable insights for content creation."
+        )
+
+        user_prompt = (
+            f"Analyze the following trend data for the topic '{topic}' and provide strategic insights:\n\n"
+            f"TRENDING NOW: {results.get('trending_now', [][:5])}\n"
+            f"RELATED QUERIES: {json.dumps(results.get('related_queries', {}), indent=2)[:1000]}\n"
+            f"RECENT NEWS: {[n['title'] for n in results.get('recent_news', [])]}\n"
+            f"REDDIT DISCUSSIONS: {[r['title'] for r in results.get('reddit_discussions', [])]}\n\n"
+            "Provide a comprehensive analysis in JSON format with:\n"
+            "1. content_opportunities: List of 5 specific content ideas based on trends\n"
+            "2. trending_angles: 5 unique angles to approach this topic\n"
+            "3. viral_potential: Score 1-10 with explanation\n"
+            "4. best_timing: When to publish for maximum impact\n"
+            "5. target_keywords: 10 high-value keywords to target\n"
+            "6. content_gaps: What competitors are missing\n"
+            "7. recommended_format: Best content format (listicle, guide, etc.)"
+        )
+
+        gemini_response = self.execute_prompt(system_prompt, user_prompt)
+        if "error" in gemini_response.lower():
+            return {"error": f"TrendIdeaAgent failed: {gemini_response}"}
+
+        ai_analysis = self.parse_json_response(gemini_response)
+        if isinstance(ai_analysis, dict) and ai_analysis.get("error"):
+            return {"error": f"TrendIdeaAgent failed: {ai_analysis['error']}"}
+
+        results["ai_trend_analysis"] = ai_analysis
         return results

@@ -30,6 +30,53 @@ from utilities.logger import get_logger
 logger = get_logger("api_clients")
 
 
+def rate_limit(calls: int = 10, period: int = 60):
+    """Rate limiting decorator."""
+    def decorator(func):
+        func.calls = []
+
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            now = time.time()
+            # Remove old calls
+            func.calls = [call for call in func.calls if call > now - period]
+
+            if len(func.calls) >= calls:
+                sleep_time = period - (now - func.calls[0])
+                if sleep_time > 0:
+                    logger.warning(f"Rate limit reached. Sleeping for {sleep_time:.2f} seconds")
+                    time.sleep(sleep_time)
+                    func.calls = []
+
+            func.calls.append(now)
+            return func(*args, **kwargs)
+
+        return wrapper
+    return decorator
+
+
+def retry_on_error(max_retries: int = 3, delay: float = 1.0):
+    """Retry decorator for API calls."""
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            last_exception = None
+            for attempt in range(max_retries):
+                try:
+                    return func(*args, **kwargs)
+                except Exception as e:
+                    last_exception = e
+                    if attempt < max_retries - 1:
+                        wait_time = delay * (2 ** attempt)  # Exponential backoff
+                        logger.warning(f"Attempt {attempt + 1} failed: {e}. Retrying in {wait_time}s...")
+                        time.sleep(wait_time)
+                    else:
+                        logger.error(f"All {max_retries} attempts failed: {e}")
+            raise last_exception
+        return wrapper
+    return decorator
+
+
 class APIProvider(Enum):
     """API provider types."""
     OPENAI = "openai"
@@ -87,54 +134,6 @@ class GeminiImageGenerationClient:
         except Exception as e:
             logger.error(f"Error during simulated image generation: {e}")
             return False
-
-
-def rate_limit(calls: int = 10, period: int = 60):
-    """Rate limiting decorator."""
-    def decorator(func):
-        func.calls = []
-        
-        @wraps(func)
-        def wrapper(*args, **kwargs):
-            now = time.time()
-            # Remove old calls
-            func.calls = [call for call in func.calls if call > now - period]
-            
-            if len(func.calls) >= calls:
-                sleep_time = period - (now - func.calls[0])
-                if sleep_time > 0:
-                    logger.warning(f"Rate limit reached. Sleeping for {sleep_time:.2f} seconds")
-                    time.sleep(sleep_time)
-                    func.calls = []
-            
-            func.calls.append(now)
-            return func(*args, **kwargs)
-        
-        return wrapper
-    return decorator
-
-
-def retry_on_error(max_retries: int = 3, delay: float = 1.0):
-    """Retry decorator for API calls."""
-    def decorator(func):
-        @wraps(func)
-        def wrapper(*args, **kwargs):
-            last_exception = None
-            for attempt in range(max_retries):
-                try:
-                    return func(*args, **kwargs)
-                except Exception as e:
-                    last_exception = e
-                    if attempt < max_retries - 1:
-                        wait_time = delay * (2 ** attempt)  # Exponential backoff
-                        logger.warning(f"Attempt {attempt + 1} failed: {e}. Retrying in {wait_time}s...")
-                        time.sleep(wait_time)
-                    else:
-                        logger.error(f"All {max_retries} attempts failed: {e}")
-            raise last_exception
-        return wrapper
-    return decorator
-
 
 class OpenAIClient:
     """OpenAI API client wrapper."""

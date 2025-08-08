@@ -1,110 +1,189 @@
-import streamlit as st
-from orchestrator.orchestrator import Orchestrator
+"""Streamlit front end for the BlogSEO multi‑agent system.
+
+This module exposes a simple user interface that collects an article topic and
+an API key, then delegates the heavy lifting to the :class:`Orchestrator`.
+The previous implementation grew organically and was difficult to maintain.
+This rewrite focuses on clarity, modularity and resilient error handling.
+"""
+
+from __future__ import annotations
+
 import os
-import json
+from pathlib import Path
+from typing import Any, Dict
 
-# --- Page Configuration ---
-st.set_page_config(
-    page_title="AI SEO Content Generator",
-    page_icon="🤖",
-    layout="wide",
-)
+import streamlit as st
 
-st.title("🤖 AI SEO Content Generator")
-st.markdown("This tool uses a multi-agent workflow to generate a comprehensive, SEO-optimized blog post.")
+from orchestrator.orchestrator import Orchestrator
 
-# --- Session State Initialization ---
-if 'process_started' not in st.session_state:
-    st.session_state.process_started = False
-    st.session_state.final_state = None
-    st.session_state.error = None
-    st.session_state.api_key_configured = False
 
-# --- API Key Configuration ---
-with st.sidebar:
-    st.header("🔑 API Configuration")
-    st.markdown("You must provide a Google Gemini API Key to run the agent workflow.")
-    gemini_api_key = st.text_input(
-        "Google Gemini API Key",
-        value=os.getenv("GEMINI_API_KEY", ""),
-        type="password",
-        help="Your Google Gemini API key is required to run the agents."
-    )
-    if st.button("Save API Key"):
-        if gemini_api_key:
-            os.environ['GEMINI_API_KEY'] = gemini_api_key
-            st.session_state.api_key_configured = True
-            st.success("API Key configured!")
-        else:
-            st.session_state.api_key_configured = False
-            st.error("Please enter a valid API Key.")
+# ---------------------------------------------------------------------------
+# Session state helpers
+# ---------------------------------------------------------------------------
 
-# Check if key is configured in session
-if not st.session_state.api_key_configured and os.getenv("GEMINI_API_KEY"):
-    st.session_state.api_key_configured = True
+def init_session_state() -> None:
+    """Populate default keys used across the application.
 
-# --- Main Application ---
-st.header("1. Enter Your Topic")
-topic = st.text_input("Blog Post Topic:", placeholder="e.g., The Future of Renewable Energy")
+    Streamlit persists ``st.session_state`` between reruns.  Initialising the
+    keys up‑front keeps the rest of the code tidy and guards against ``KeyError``
+    instances if Streamlit is forced to rerun mid‑process.
+    """
 
-if st.button("🚀 Generate Article", disabled=not topic or not st.session_state.api_key_configured):
+    defaults = {
+        "api_key_configured": bool(os.getenv("GEMINI_API_KEY")),
+        "process_started": False,
+        "final_state": None,
+        "error": None,
+    }
+
+    for key, value in defaults.items():
+        st.session_state.setdefault(key, value)
+
+
+# ---------------------------------------------------------------------------
+# Sidebar configuration
+# ---------------------------------------------------------------------------
+
+def render_sidebar() -> None:
+    """Render the API key configuration controls in the sidebar."""
+
+    with st.sidebar:
+        st.header("🔑 API Configuration")
+        st.markdown(
+            "A valid Google Gemini API key is required to run the agent "
+            "workflow."
+        )
+
+        api_key = st.text_input(
+            "Google Gemini API Key",
+            value=os.getenv("GEMINI_API_KEY", ""),
+            type="password",
+            help="Your Google Gemini API key",
+        )
+
+        if st.button("Save API Key"):
+            if api_key:
+                os.environ["GEMINI_API_KEY"] = api_key
+                st.session_state.api_key_configured = True
+                st.success("API Key configured!")
+            else:
+                st.session_state.api_key_configured = False
+                st.error("Please enter a valid API Key.")
+
+
+# ---------------------------------------------------------------------------
+# Generation logic
+# ---------------------------------------------------------------------------
+
+def run_generation(topic: str) -> None:
+    """Execute the orchestrator and persist results in session state."""
+
     st.session_state.process_started = True
     st.session_state.final_state = None
     st.session_state.error = None
 
     with st.spinner("Orchestrating AI agents... This may take several minutes."):
         try:
-            # Instantiate and run the orchestrator
             orchestrator = Orchestrator()
             final_state = orchestrator.run(topic)
 
-            if "error" in final_state:
+            if isinstance(final_state, dict) and "error" in final_state:
                 st.session_state.error = final_state["error"]
             else:
                 st.session_state.final_state = final_state
-
-        except Exception as e:
-            st.session_state.error = f"A critical error occurred: {e}"
-            import traceback
-            st.error(traceback.format_exc())
+        except Exception as exc:  # pragma: no cover - defensive
+            st.session_state.error = str(exc)
 
 
-# --- Display Results ---
-if st.session_state.process_started:
+# ---------------------------------------------------------------------------
+# Result rendering
+# ---------------------------------------------------------------------------
+
+def render_results() -> None:
+    """Display the generation results or any encountered errors."""
+
+    if not st.session_state.process_started:
+        return
+
     st.markdown("---")
     st.header("2. Results")
 
     if st.session_state.error:
         st.error(f"An error occurred during generation: {st.session_state.error}")
+        return
 
-    elif st.session_state.final_state:
-        st.success("🎉 Content generation complete!")
+    final_state: Dict[str, Any] | None = st.session_state.final_state
+    if not final_state:
+        st.info("Generation in progress... Please wait for completion.")
+        return
 
-        final_package = st.session_state.final_state.get('final_package', {})
-        html_file_path = final_package.get('html_file')
-        zip_file_path = final_package.get('zip_archive')
+    st.success("🎉 Content generation complete!")
+    final_package = final_state.get("final_package", {})
 
+    html_file = final_package.get("html_file")
+    if html_file and Path(html_file).exists():
         st.subheader("Final Article Preview")
-        if html_file_path and os.path.exists(html_file_path):
-            with open(html_file_path, 'r', encoding='utf-8') as f:
-                html_content = f.read()
-            st.components.v1.html(html_content, height=600, scrolling=True)
-        else:
-            st.warning("Could not find HTML file to preview.")
-
-        st.subheader("Download Your Content")
-        if zip_file_path and os.path.exists(zip_file_path):
-            with open(zip_file_path, "rb") as f:
-                st.download_button(
-                    label="📦 Download Complete Package (.zip)",
-                    data=f,
-                    file_name=os.path.basename(zip_file_path),
-                    mime="application/zip"
-                )
-        else:
-            st.warning("Could not find zip archive to download.")
-            st.json(st.session_state.final_state) # Display final state for debugging
-
+        with open(html_file, "r", encoding="utf-8") as handle:
+            st.components.v1.html(handle.read(), height=600, scrolling=True)
     else:
-        # This part will show while the spinner is active
-        st.info("Generation in progress... Please wait for the process to complete.")
+        st.warning("Could not find HTML file to preview.")
+
+    zip_file = final_package.get("zip_archive")
+    if zip_file and Path(zip_file).exists():
+        st.subheader("Download Your Content")
+        with open(zip_file, "rb") as handle:
+            st.download_button(
+                label="📦 Download Complete Package (.zip)",
+                data=handle,
+                file_name=Path(zip_file).name,
+                mime="application/zip",
+            )
+    else:
+        st.warning("Could not find zip archive to download.")
+
+
+# ---------------------------------------------------------------------------
+# Main entry point
+# ---------------------------------------------------------------------------
+
+def main() -> None:
+    """Entry point for the Streamlit application."""
+
+    st.set_page_config(
+        page_title="AI SEO Content Generator",
+        page_icon="🤖",
+        layout="wide",
+    )
+
+    st.title("🤖 AI SEO Content Generator")
+    st.markdown(
+        "This tool uses a multi-agent workflow to generate a comprehensive, "
+        "SEO-optimised blog post."
+    )
+
+    init_session_state()
+    render_sidebar()
+
+    st.header("1. Enter Your Topic")
+    with st.form("topic_form"):
+        topic = st.text_input(
+            "Blog Post Topic:",
+            placeholder="e.g., The Future of Renewable Energy",
+        )
+        submitted = st.form_submit_button(
+            "🚀 Generate Article",
+            disabled=not st.session_state.api_key_configured,
+        )
+
+        if submitted:
+            if not topic:
+                st.error("Please provide a topic before generating.")
+            else:
+                run_generation(topic)
+
+    render_results()
+
+
+if __name__ == "__main__":  # pragma: no cover
+    main()
+
