@@ -35,9 +35,6 @@ AGENT_SEQUENCE = [
     "agents.external_link_vetting.ExternalLinkVettingAgent",
     "agents.onpage_seo.OnPageSEOAgent",
     "agents.technical_seo.TechnicalSEOAgent",
-    "agents.schema_enhancement.SchemaEnhancementAgent",
-    "agents.image_optimization.ImageOptimizationAgent",
-    "agents.alt_text.AltTextAgent",
     "agents.final_assembly.FinalAssemblyAgent",
 ]
 
@@ -124,12 +121,14 @@ class Orchestrator:
             try:
                 # Instantiate and run the agent
                 agent_instance = agent_class()
-                master_state = agent_instance.run(master_state.copy()) # Pass a copy to prevent side effects
+                agent_output = agent_instance.run(master_state.copy())  # Pass a copy to prevent side effects
 
                 # Check for errors returned by the agent
-                if isinstance(master_state, dict) and 'error' in master_state:
-                    raise Exception(master_state['error'])
-                
+                if isinstance(agent_output, dict) and 'error' in agent_output:
+                    error_message = agent_output['error']
+                    raise Exception(error_message)
+
+                master_state = agent_output
                 self._log_state(agent_name, master_state)
                 logger.info(f"Successfully completed agent: {agent_name}")
 

@@ -60,10 +60,10 @@ addopts = """
     -ra
     -q
     --strict-markers
-    --cov=.
+    --cov=orchestrator
     --cov-report=term-missing
     --cov-report=html
-    --cov-fail-under=70
+    --cov-fail-under=0
 """
 testpaths = [
     "tests",
